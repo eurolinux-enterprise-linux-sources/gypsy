@@ -1,0 +1,90 @@
+<!-- ##### SECTION Title ##### -->
+GypsySatellite
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsySatellite ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GypsySatellite::satellites-changed ##### -->
+<para>
+
+</para>
+
+@gypsysatellite: the object which received the signal.
+@arg1: 
+
+<!-- ##### ARG GypsySatellite:object-path ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GYPSY_SATELLITE_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_SATELLITE_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### STRUCT GypsySatelliteDetails ##### -->
+<para>
+
+</para>
+
+@satellite_id: 
+@in_use: 
+@elevation: 
+@azimuth: 
+@snr: 
+
+<!-- ##### FUNCTION gypsy_satellite_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_satellite_get_satellites ##### -->
+<para>
+
+</para>
+
+@satellite: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_satellite_free_satellite_array ##### -->
+<para>
+
+</para>
+
+@satellites: 
+
+

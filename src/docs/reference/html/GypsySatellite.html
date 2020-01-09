@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsySatellite</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch03.html" title="GPS Data Objects">
+<link rel="prev" href="GypsyPosition.html" title="GypsyPosition">
+<link rel="next" href="gypsy-GypsyTime.html" title="GypsyTime">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GypsyPosition.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="gypsy-GypsyTime.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GypsySatellite.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GypsySatellite.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GypsySatellite.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GypsySatellite.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GypsySatellite.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsySatellite">
+<a name="GypsySatellite"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GypsySatellite.top_of_page"></a>GypsySatellite</span></h2>
+<p>GypsySatellite — Object for obtaining satellite information</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GypsySatellite.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GypsySatellite.html#GypsySatellite-struct" title="GypsySatellite">GypsySatellite</a>;
+#define             <a class="link" href="GypsySatellite.html#GYPSY-SATELLITE-DBUS-INTERFACE--CAPS" title="GYPSY_SATELLITE_DBUS_INTERFACE">GYPSY_SATELLITE_DBUS_INTERFACE</a>
+#define             <a class="link" href="GypsySatellite.html#GYPSY-SATELLITE-DBUS-SERVICE--CAPS" title="GYPSY_SATELLITE_DBUS_SERVICE">GYPSY_SATELLITE_DBUS_SERVICE</a>
+                    <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails">GypsySatelliteDetails</a>;
+<a class="link" href="GypsySatellite.html" title="GypsySatellite">GypsySatellite</a> *    <a class="link" href="GypsySatellite.html#gypsy-satellite-new" title="gypsy_satellite_new ()">gypsy_satellite_new</a>                 (const char *object_path);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+>GPtrArray</a> *         <a class="link" href="GypsySatellite.html#gypsy-satellite-get-satellites" title="gypsy_satellite_get_satellites ()">gypsy_satellite_get_satellites</a>      (<a class="link" href="GypsySatellite.html" title="GypsySatellite">GypsySatellite</a> *satellite,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+void                <a class="link" href="GypsySatellite.html#gypsy-satellite-free-satellite-array" title="gypsy_satellite_free_satellite_array ()">gypsy_satellite_free_satellite_array</a>
+                                                        (<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+>GPtrArray</a> *satellites);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GypsySatellite.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GypsySatellite
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GypsySatellite.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsySatellite.html#GypsySatellite--object-path" title='The "object-path" property'>object-path</a>"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GypsySatellite.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsySatellite.html#GypsySatellite-satellites-changed" title='The "satellites-changed" signal'>satellites-changed</a>"                             : Run Last
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GypsySatellite.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a> is used whenever the client program wishes to know about
+changes in the satellite details. The satellite details contain the satellite
+ID number (the PRN), the elevation, the azimuth, the signal-to-noise ratio
+(SNR) and whether or not the satellite was used to calculate the fix.
+</p>
+<p>
+A <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a> object is created using <a class="link" href="GypsySatellite.html#gypsy-satellite-new" title="gypsy_satellite_new ()"><code class="function">gypsy_satellite_new()</code></a> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a> function. The client can then find out about the
+visible satellites with <a class="link" href="GypsySatellite.html#gypsy-satellite-get-satellites" title="gypsy_satellite_get_satellites ()"><code class="function">gypsy_satellite_get_satellites()</code></a> which returns a
+GPtrArray containing the <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails"><span class="type">GypsySatelliteDetails</span></a> for each visible satellite.
+Once the client is finished with this GPtrArray 
+<a class="link" href="GypsySatellite.html#gypsy-satellite-free-satellite-array" title="gypsy_satellite_free_satellite_array ()"><code class="function">gypsy_satellite_free_satellite_array()</code></a> should be used to free the data.
+</p>
+<p>
+As the satellite information changes <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a> will emit the 
+satellite-changed signal. This signal contains the satellite details in
+a GPtrArray. In this case the satellite array does not need to be freed
+with <a class="link" href="GypsySatellite.html#gypsy-satellite-free-satellite-array" title="gypsy_satellite_free_satellite_array ()"><code class="function">gypsy_satellite_free_satellite_array()</code></a>.
+</p>
+<p>
+Although gypsy-daemon only emits signals whenever the associated data has 
+changed, satellite data is constantly changing, so so the satellite-changed
+signal will be emitted at a rate of once every second.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+GypsySatellite *satellite;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+satellite = gypsy_satellite_new (path);
+g_signal_connect (satellite, "satellite-changed", G_CALLBACK (satellite_changed), NULL);
+
+. . .
+
+static void satellite_changed (GypsySatellite *satellite, 
+GPtrArray *satellites,
+gpointer userdata)
+{
+  int i;
+
+  for (i = 0; i &lt; satellites-&gt;len; i++) {
+    GypsySatelliteDetails *details = satellites-&gt;pdata[i];
+    g_print ("Satellite %d: %s", details-&gt;satellite_id, details-&gt;in_use ? "In use" : "Not in use");
+  }
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GypsySatellite.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsySatellite">
+<a name="GypsySatellite-struct"></a><h3>GypsySatellite</h3>
+<pre class="programlisting">typedef struct _GypsySatellite GypsySatellite;</pre>
+<p>
+There are no public fields in <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_SATELLITE_DBUS_INTERFACE">
+<a name="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_SATELLITE_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_SATELLITE_DBUS_INTERFACE "org.freedesktop.Gypsy.Satellite"
+</pre>
+<p>
+A define containing the name of the Satellite interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_SATELLITE_DBUS_SERVICE">
+<a name="GYPSY-SATELLITE-DBUS-SERVICE--CAPS"></a><h3>GYPSY_SATELLITE_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_SATELLITE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the address of the Satellite service.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GypsySatelliteDetails">
+<a name="GypsySatelliteDetails"></a><h3>GypsySatelliteDetails</h3>
+<pre class="programlisting">typedef struct {
+	int satellite_id;
+	gboolean in_use;
+	guint elevation;
+	guint azimuth;
+	guint snr;
+} GypsySatelliteDetails;
+</pre>
+<p>
+A structure defining a satellite</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term">int <em class="structfield"><code>satellite_id</code></em>;</span></p></td>
+<td> The satellite PRN id
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a> <em class="structfield"><code>in_use</code></em>;</span></p></td>
+<td> Whether this satellite was used in calculating the fix
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a> <em class="structfield"><code>elevation</code></em>;</span></p></td>
+<td> The satellite elevation
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a> <em class="structfield"><code>azimuth</code></em>;</span></p></td>
+<td> The satellite azimuth
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#guint"
+>guint</a> <em class="structfield"><code>snr</code></em>;</span></p></td>
+<td> The signal to noise ratio
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_satellite_new ()">
+<a name="gypsy-satellite-new"></a><h3>gypsy_satellite_new ()</h3>
+<pre class="programlisting"><a class="link" href="GypsySatellite.html" title="GypsySatellite">GypsySatellite</a> *    gypsy_satellite_new                 (const char *object_path);</pre>
+<p>
+Creates a new <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a> object that listens for satellite changes
+from the GPS found at <em class="parameter"><code>object_path</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object_path</code></em> :</span></p></td>
+<td> Object path to the GPS device
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a> object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_satellite_get_satellites ()">
+<a name="gypsy-satellite-get-satellites"></a><h3>gypsy_satellite_get_satellites ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+>GPtrArray</a> *         gypsy_satellite_get_satellites      (<a class="link" href="GypsySatellite.html" title="GypsySatellite">GypsySatellite</a> *satellite,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Retrieves the <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails"><span class="type">GypsySatelliteDetails</span></a> about the satellites that the 
+GPS is able to see.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>satellite</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsySatellite.html" title="GypsySatellite"><span class="type">GypsySatellite</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> for error return
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+><span class="type">GPtrArray</span></a> of <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails"><span class="type">GypsySatelliteDetails</span></a> or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> on error. 
+Should be freed using <a class="link" href="GypsySatellite.html#gypsy-satellite-free-satellite-array" title="gypsy_satellite_free_satellite_array ()"><code class="function">gypsy_satellite_free_satellite_array()</code></a>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_satellite_free_satellite_array ()">
+<a name="gypsy-satellite-free-satellite-array"></a><h3>gypsy_satellite_free_satellite_array ()</h3>
+<pre class="programlisting">void                gypsy_satellite_free_satellite_array
+                                                        (<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+>GPtrArray</a> *satellites);</pre>
+<p>
+Frees all resources used in the array.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>satellites</code></em> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+><span class="type">GPtrArray</span></a> containing <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails"><span class="type">GypsySatelliteDetails</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GypsySatellite.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "object-path" property'>
+<a name="GypsySatellite--object-path"></a><h3>The <code class="literal">"object-path"</code> property</h3>
+<pre class="programlisting">  "object-path"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only</pre>
+<p>The DBus path to the object.</p>
+<p>Default value: ""</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GypsySatellite.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "satellites-changed" signal'>
+<a name="GypsySatellite-satellites-changed"></a><h3>The <code class="literal">"satellites-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GypsySatellite.html" title="GypsySatellite">GypsySatellite</a> *satellites,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>        arg1,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>        user_data)       : Run Last</pre>
+<p>
+The ::satellites-changed signal is emitted every time the GPS
+reports a change in the satellite data.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>satellites</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Pointer-Arrays.html#GPtrArray"
+><span class="type">GPtrArray</span></a> containing <a class="link" href="GypsySatellite.html#GypsySatelliteDetails" title="GypsySatelliteDetails"><span class="type">GypsySatelliteDetails</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

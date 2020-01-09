@@ -1,0 +1,119 @@
+<!-- ##### SECTION Title ##### -->
+GypsyDevice
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyDevice ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GypsyDevice::connection-changed ##### -->
+<para>
+
+</para>
+
+@gypsydevice: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL GypsyDevice::fix-status-changed ##### -->
+<para>
+
+</para>
+
+@gypsydevice: the object which received the signal.
+@arg1: 
+
+<!-- ##### ARG GypsyDevice:object-path ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GYPSY_DEVICE_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_DEVICE_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM GypsyDeviceFixStatus ##### -->
+<para>
+
+</para>
+
+@GYPSY_DEVICE_FIX_STATUS_INVALID: 
+@GYPSY_DEVICE_FIX_STATUS_NONE: 
+@GYPSY_DEVICE_FIX_STATUS_2D: 
+@GYPSY_DEVICE_FIX_STATUS_3D: 
+
+<!-- ##### FUNCTION gypsy_device_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_device_get_connection_status ##### -->
+<para>
+
+</para>
+
+@device: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_device_get_fix_status ##### -->
+<para>
+
+</para>
+
+@device: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_device_start ##### -->
+<para>
+
+</para>
+
+@device: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_device_stop ##### -->
+<para>
+
+</para>
+
+@device: 
+@error: 
+@Returns: 
+
+

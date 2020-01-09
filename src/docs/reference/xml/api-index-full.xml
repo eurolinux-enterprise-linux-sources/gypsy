@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE indexdiv PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<indexdiv>
+<indexdiv><title>G</title>
+<indexentry><primaryie linkends="GypsyAccuracy-struct"><link linkend="GypsyAccuracy">GypsyAccuracy</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyAccuracy-accuracy-changed"><link linkend="GypsyAccuracy-accuracy-changed">GypsyAccuracy::accuracy-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyAccuracy--object-path"><link linkend="GypsyAccuracy--object-path">GypsyAccuracy:object-path</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyAccuracyFields"><link linkend="GypsyAccuracyFields">GypsyAccuracyFields</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyControl-struct"><link linkend="GypsyControl">GypsyControl</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyCourse-struct"><link linkend="GypsyCourse">GypsyCourse</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyCourse-course-changed"><link linkend="GypsyCourse-course-changed">GypsyCourse::course-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyCourse--object-path"><link linkend="GypsyCourse--object-path">GypsyCourse:object-path</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyCourseFields"><link linkend="GypsyCourseFields">GypsyCourseFields</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyDevice-struct"><link linkend="GypsyDevice">GypsyDevice</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyDevice-connection-changed"><link linkend="GypsyDevice-connection-changed">GypsyDevice::connection-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyDevice-fix-status-changed"><link linkend="GypsyDevice-fix-status-changed">GypsyDevice::fix-status-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyDevice--object-path"><link linkend="GypsyDevice--object-path">GypsyDevice:object-path</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyDeviceFixStatus"><link linkend="GypsyDeviceFixStatus">GypsyDeviceFixStatus</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyPosition-struct"><link linkend="GypsyPosition">GypsyPosition</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyPosition-position-changed"><link linkend="GypsyPosition-position-changed">GypsyPosition::position-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyPosition--object-path"><link linkend="GypsyPosition--object-path">GypsyPosition:object-path</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyPositionFields"><link linkend="GypsyPositionFields">GypsyPositionFields</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsySatellite-struct"><link linkend="GypsySatellite">GypsySatellite</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsySatellite-satellites-changed"><link linkend="GypsySatellite-satellites-changed">GypsySatellite::satellites-changed</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsySatellite--object-path"><link linkend="GypsySatellite--object-path">GypsySatellite:object-path</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsySatelliteDetails"><link linkend="GypsySatelliteDetails">GypsySatelliteDetails</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GypsyTime"><link linkend="GypsyTime">GypsyTime</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS">GYPSY_ACCURACY_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-ACCURACY-DBUS-SERVICE--CAPS"><link linkend="GYPSY-ACCURACY-DBUS-SERVICE--CAPS">GYPSY_ACCURACY_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-accuracy-get-accuracy"><link linkend="gypsy-accuracy-get-accuracy">gypsy_accuracy_get_accuracy</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-accuracy-new"><link linkend="gypsy-accuracy-new">gypsy_accuracy_new</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-control-create"><link linkend="gypsy-control-create">gypsy_control_create</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-CONTROL-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-CONTROL-DBUS-INTERFACE--CAPS">GYPSY_CONTROL_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-CONTROL-DBUS-PATH--CAPS"><link linkend="GYPSY-CONTROL-DBUS-PATH--CAPS">GYPSY_CONTROL_DBUS_PATH</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-CONTROL-DBUS-SERVICE--CAPS"><link linkend="GYPSY-CONTROL-DBUS-SERVICE--CAPS">GYPSY_CONTROL_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-control-get-default"><link linkend="gypsy-control-get-default">gypsy_control_get_default</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-COURSE-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-COURSE-DBUS-INTERFACE--CAPS">GYPSY_COURSE_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-COURSE-DBUS-SERVICE--CAPS"><link linkend="GYPSY-COURSE-DBUS-SERVICE--CAPS">GYPSY_COURSE_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-course-get-course"><link linkend="gypsy-course-get-course">gypsy_course_get_course</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-course-new"><link linkend="gypsy-course-new">gypsy_course_new</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-DEVICE-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-DEVICE-DBUS-INTERFACE--CAPS">GYPSY_DEVICE_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-DEVICE-DBUS-SERVICE--CAPS"><link linkend="GYPSY-DEVICE-DBUS-SERVICE--CAPS">GYPSY_DEVICE_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-device-get-connection-status"><link linkend="gypsy-device-get-connection-status">gypsy_device_get_connection_status</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-device-get-fix-status"><link linkend="gypsy-device-get-fix-status">gypsy_device_get_fix_status</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-device-new"><link linkend="gypsy-device-new">gypsy_device_new</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-device-start"><link linkend="gypsy-device-start">gypsy_device_start</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-device-stop"><link linkend="gypsy-device-stop">gypsy_device_stop</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-POSITION-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-POSITION-DBUS-INTERFACE--CAPS">GYPSY_POSITION_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-POSITION-DBUS-SERVICE--CAPS"><link linkend="GYPSY-POSITION-DBUS-SERVICE--CAPS">GYPSY_POSITION_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-position-get-position"><link linkend="gypsy-position-get-position">gypsy_position_get_position</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-position-new"><link linkend="gypsy-position-new">gypsy_position_new</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS">GYPSY_SATELLITE_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-SATELLITE-DBUS-SERVICE--CAPS"><link linkend="GYPSY-SATELLITE-DBUS-SERVICE--CAPS">GYPSY_SATELLITE_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-satellite-free-satellite-array"><link linkend="gypsy-satellite-free-satellite-array">gypsy_satellite_free_satellite_array</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-satellite-get-satellites"><link linkend="gypsy-satellite-get-satellites">gypsy_satellite_get_satellites</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-satellite-new"><link linkend="gypsy-satellite-new">gypsy_satellite_new</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-TIME-DBUS-INTERFACE--CAPS"><link linkend="GYPSY-TIME-DBUS-INTERFACE--CAPS">GYPSY_TIME_DBUS_INTERFACE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="GYPSY-TIME-DBUS-SERVICE--CAPS"><link linkend="GYPSY-TIME-DBUS-SERVICE--CAPS">GYPSY_TIME_DBUS_SERVICE</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-time-get-time"><link linkend="gypsy-time-get-time">gypsy_time_get_time</link></primaryie></indexentry>
+<indexentry><primaryie linkends="gypsy-time-new"><link linkend="gypsy-time-new">gypsy_time_new</link></primaryie></indexentry>
+</indexdiv>
+</indexdiv>

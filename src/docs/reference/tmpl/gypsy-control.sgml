@@ -1,0 +1,65 @@
+<!-- ##### SECTION Title ##### -->
+GypsyControl
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyControl ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### MACRO GYPSY_CONTROL_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_CONTROL_DBUS_PATH ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_CONTROL_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gypsy_control_get_default ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_control_create ##### -->
+<para>
+
+</para>
+
+@control: 
+@device_name: 
+@error: 
+@Returns: 
+
+

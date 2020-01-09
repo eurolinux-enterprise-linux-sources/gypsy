@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsyTime</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch03.html" title="GPS Data Objects">
+<link rel="prev" href="GypsySatellite.html" title="GypsySatellite">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GypsySatellite.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td> </td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gypsy-GypsyTime.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#gypsy-GypsyTime.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsyTime">
+<a name="gypsy-GypsyTime"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gypsy-GypsyTime.top_of_page"></a>GypsyTime</span></h2>
+<p>GypsyTime — Object for obtaining GPS time from gypsy-daemon</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="gypsy-GypsyTime.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime">GypsyTime</a>;
+#define             <a class="link" href="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-SERVICE--CAPS" title="GYPSY_TIME_DBUS_SERVICE">GYPSY_TIME_DBUS_SERVICE</a>
+#define             <a class="link" href="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-INTERFACE--CAPS" title="GYPSY_TIME_DBUS_INTERFACE">GYPSY_TIME_DBUS_INTERFACE</a>
+<a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime">GypsyTime</a> *         <a class="link" href="gypsy-GypsyTime.html#gypsy-time-new" title="gypsy_time_new ()">gypsy_time_new</a>                      (const char *object_path);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="gypsy-GypsyTime.html#gypsy-time-get-time" title="gypsy_time_get_time ()">gypsy_time_get_time</a>                 (<a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime">GypsyTime</a> *gps_time,
+                                                         int *timestamp,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="gypsy-GypsyTime.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a> is used whenever the client program wishes to know about
+GPS time changes. It can report the current GPS time, and has a signal
+to notify listeners of changes.
+</p>
+<p>
+A <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a> object is created with <a class="link" href="gypsy-GypsyTime.html#gypsy-time-new" title="gypsy_time_new ()"><code class="function">gypsy_time_new()</code></a> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a> function. The client can then find out about the
+GPS time with <a class="link" href="gypsy-GypsyTime.html#gypsy-time-get-time" title="gypsy_time_get_time ()"><code class="function">gypsy_time_get_time()</code></a>.
+</p>
+<p>
+As the GPS time information changes <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a> will emit the 
+time-changed signal. This signal contains the GPS time of the most recent
+GPS update that it received.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+GypsyTime *gps_time;
+GError *error = NULL;
+
+. . .
+
+/* path comes from the gypsy_control_create() function */
+gps_time = gypsy_time_new (path);
+g_signal_connect (gps_time, "time-changed", G_CALLBACK (time_changed), NULL);
+
+. . .
+
+static void position_changed (GypsyTime *gps_time, 
+int timestamp,
+gpointer userdata)
+{
+  g_print ("timestamp: %d\n", timestamp);
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="gypsy-GypsyTime.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsyTime">
+<a name="GypsyTime"></a><h3>GypsyTime</h3>
+<pre class="programlisting">typedef struct {
+	GObject parent_object;
+} GypsyTime;
+</pre>
+<p>
+There are no public fields in <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_TIME_DBUS_SERVICE">
+<a name="GYPSY-TIME-DBUS-SERVICE--CAPS"></a><h3>GYPSY_TIME_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_TIME_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the address of the Time service</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_TIME_DBUS_INTERFACE">
+<a name="GYPSY-TIME-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_TIME_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_TIME_DBUS_INTERFACE "org.freedesktop.Gypsy.Time"
+</pre>
+<p>
+A define containing the name of the Time interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_time_new ()">
+<a name="gypsy-time-new"></a><h3>gypsy_time_new ()</h3>
+<pre class="programlisting"><a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime">GypsyTime</a> *         gypsy_time_new                      (const char *object_path);</pre>
+<p>
+Creates a new <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a> object that listens for time changes
+from the GPS found at <em class="parameter"><code>object_path</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object_path</code></em> :</span></p></td>
+<td> Object path to the GPS device
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a> object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_time_get_time ()">
+<a name="gypsy-time-get-time"></a><h3>gypsy_time_get_time ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gypsy_time_get_time                 (<a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime">GypsyTime</a> *gps_time,
+                                                         int *timestamp,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Obtains the current time, if known, from the GPS device.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>gps_time</code></em> :</span></p></td>
+<td> A <a class="link" href="gypsy-GypsyTime.html#GypsyTime" title="GypsyTime"><span class="type">GypsyTime</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timestamp</code></em> :</span></p></td>
+<td> Pointer to store the timestamp
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> Pointer to store a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> TRUE on success, FALSE on error.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

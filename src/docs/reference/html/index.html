@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Gypsy Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="next" href="rn01.html" title="Gypsy Overview">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="book" title="Gypsy Reference Manual">
+<div class="titlepage">
+<div>
+<div><table class="navigation" id="top" width="100%" cellpadding="2" cellspacing="0"><tr><th valign="middle"><p class="title">Gypsy Reference Manual</p></th></tr></table></div>
+<div><div class="authorgroup">
+<div class="author">
+<h3 class="author">
+<span class="firstname">Iain</span> <span class="surname">Holmes</span>
+</h3>
+<div class="affiliation"><div class="address"><p><br>
+            <code class="email">&lt;<a class="email" href="mailto:iain@gnome.org">iain@gnome.org</a>&gt;</code><br>
+          </p></div></div>
+</div>
+<div class="author">
+<h3 class="author">
+<span class="firstname">Ross</span> <span class="surname">Burton</span>
+</h3>
+<div class="affiliation"><div class="address"><p><br>
+            <code class="email">&lt;<a class="email" href="mailto:ross@openedhand.com">ross@openedhand.com</a>&gt;</code><br>
+          </p></div></div>
+</div>
+</div></div>
+<div><p class="releaseinfo">Version 0.7
+</p></div>
+<div><p class="copyright">Copyright © 2007 Iain Holmes</p></div>
+<div><p class="copyright">Copyright © 2007 OpenedHand LTD</p></div>
+<div><div class="legalnotice" title="Legal Notice">
+<a name="id499785"></a><p>
+        Permission is granted to copy, distribute and/or modify this
+        document under the terms of the <em class="citetitle">GNU Free
+        Documentation License</em>, Version 1.1 or any later
+        version published by the Free Software Foundation with no
+        Invariant Sections, no Front-Cover Texts, and no Back-Cover
+        Texts. You may obtain a copy of the <em class="citetitle">GNU Free
+        Documentation License</em> from the Free Software
+        Foundation by visiting <a class="ulink" href="http://www.fsf.org" target="_top">their Web site</a> or by writing
+        to:
+
+        </p>
+<div class="address"><p><br>
+          The Free Software Foundation, Inc.,<br>
+          <span class="street">59 Temple Place</span> - Suite 330,<br>
+          <span class="city">Boston</span>, <span class="state">MA</span> <span class="postcode">02111-1307</span>,<br>
+          <span class="country">USA</span><br>
+        </p></div>
+<p>
+      </p>
+</div></div>
+</div>
+<hr>
+</div>
+<div class="toc"><dl>
+<dt><span class="reference"><a href="rn01.html">I. Gypsy Overview</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="gypsy-design.html">Gypsy's Design</a></span><span class="refpurpose"> — An explanation of the design principles behind Gypsy.</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="why-not-gpsd.html">Design Flaws in GPSD</a></span><span class="refpurpose"> — A discussion of design flaws in GPSD and how Gypsy is designed to fix them.</span>
+</dt>
+</dl></dd>
+<dt><span class="reference"><a href="rn02.html">II. Tutorials</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="ch01.html">Programming Gypsy With Python</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="ch01.html#overview">Overview of Gypsy</a></span></dt>
+<dt><span class="section"><a href="connecting.html">Connecting to a GPS</a></span></dt>
+<dt><span class="section"><a href="gps.html">Getting Your Location</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="reference"><a href="gypsy-server-interfaces.html">III. Gypsy Server Interface</a></span></dt>
+<dd><dl><dt>
+<span class="refentrytitle"><a href="Server.html">org.freedesktop.Gypsy.Server</a></span><span class="refpurpose"> — Server interface</span>
+</dt></dl></dd>
+<dt><span class="reference"><a href="gypsy-client-interfaces.html">IV. Gypsy Client Interface</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="Accuracy.html">org.freedesktop.Gypsy.Accuracy</a></span><span class="refpurpose"> — Accuracy interface</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="Course.html">org.freedesktop.Gypsy.Course</a></span><span class="refpurpose"> — Course interface</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="Device.html">org.freedesktop.Gypsy.Device</a></span><span class="refpurpose"> — Device interface</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="Position.html">org.freedesktop.Gypsy.Position</a></span><span class="refpurpose"> — Position interface</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="Satellite.html">org.freedesktop.Gypsy.Satellite</a></span><span class="refpurpose"> — Satellite interface</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="Time.html">org.freedesktop.Gypsy.Time</a></span><span class="refpurpose"> — Time interface</span>
+</dt>
+</dl></dd>
+<dt><span class="reference"><a href="rn05.html">V. LibGypsy API Reference</a></span></dt>
+<dd><dl>
+<dt><span class="chapter"><a href="ch02.html">Gypsy-Daemon Control</a></span></dt>
+<dd><dl><dt>
+<span class="refentrytitle"><a href="GypsyControl.html">GypsyControl</a></span><span class="refpurpose"> — Control object for gypsy-daemon</span>
+</dt></dl></dd>
+<dt><span class="chapter"><a href="ch03.html">GPS Data Objects</a></span></dt>
+<dd><dl>
+<dt>
+<span class="refentrytitle"><a href="GypsyDevice.html">GypsyDevice</a></span><span class="refpurpose"> — Object for obtaining device information</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GypsyAccuracy.html">GypsyAccuracy</a></span><span class="refpurpose"> — Object for obtaining accuracy information from gypsy-daemon</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GypsyCourse.html">GypsyCourse</a></span><span class="refpurpose"> — Object for obtaining course information</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GypsyPosition.html">GypsyPosition</a></span><span class="refpurpose"> — Object for obtaining positions from gypsy-daemon</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="GypsySatellite.html">GypsySatellite</a></span><span class="refpurpose"> — Object for obtaining satellite information</span>
+</dt>
+<dt>
+<span class="refentrytitle"><a href="gypsy-GypsyTime.html">GypsyTime</a></span><span class="refpurpose"> — Object for obtaining GPS time from gypsy-daemon</span>
+</dt>
+</dl></dd>
+</dl></dd>
+</dl></div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

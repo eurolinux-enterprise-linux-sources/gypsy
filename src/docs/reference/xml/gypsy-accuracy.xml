@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="GypsyAccuracy">
+<refmeta>
+<refentrytitle role="top_of_page" id="GypsyAccuracy.top_of_page">GypsyAccuracy</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GYPSY Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GypsyAccuracy</refname>
+<refpurpose>Object for obtaining accuracy information from gypsy-daemon</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GypsyAccuracy.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GypsyAccuracy-struct">GypsyAccuracy</link>;
+#define             <link linkend="GYPSY-ACCURACY-DBUS-SERVICE--CAPS">GYPSY_ACCURACY_DBUS_SERVICE</link>
+#define             <link linkend="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS">GYPSY_ACCURACY_DBUS_INTERFACE</link>
+enum                <link linkend="GypsyAccuracyFields">GypsyAccuracyFields</link>;
+<link linkend="GypsyAccuracy">GypsyAccuracy</link> *     <link linkend="gypsy-accuracy-new">gypsy_accuracy_new</link>                  (const <link linkend="char">char</link> *object_path);
+<link linkend="GypsyAccuracyFields">GypsyAccuracyFields</link>  <link linkend="gypsy-accuracy-get-accuracy">gypsy_accuracy_get_accuracy</link>        (<link linkend="GypsyAccuracy">GypsyAccuracy</link> *accuracy,
+                                                         <link linkend="double">double</link> *pdop,
+                                                         <link linkend="double">double</link> *hdop,
+                                                         <link linkend="double">double</link> *vdop,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GypsyAccuracy.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GypsyAccuracy
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GypsyAccuracy.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GypsyAccuracy--object-path">object-path</link>&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GypsyAccuracy.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GypsyAccuracy-accuracy-changed">accuracy-changed</link>&quot;                               : Run First / No Recursion
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GypsyAccuracy.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link> is used whenever the client program wishes to know about GPS
+accuracy changes. It can report the current accuracy, and has a signal to
+notify listeners to changes. The accuracy consists of positional accuracy,
+horizontal accuracy (on the latitude/longitude plane) and vertical 
+(altitudinal) accuracy.
+</para>
+<para>
+A <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link> object is created using <link linkend="gypsy-accuracy-new"><function>gypsy_accuracy_new()</function></link> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<link linkend="gypsy-control-create"><function>gypsy_control_create()</function></link> function. The client can then find out about the
+course with <link linkend="gypsy-accuracy-get-accuracy"><function>gypsy_accuracy_get_accuracy()</function></link>.
+</para>
+<para>
+As the accuracy information changes <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link> will emit the 
+accuracy-changed signal. This signal contains the accuracy information if 
+gypsy-daemon knows it. It has a fields paramater which is a bitmask of
+<link linkend="GypsyAccuracyFields"><type>GypsyAccuracyFields</type></link> which indicates which of the position, horizontal or
+vertical contains valid information. 
+</para>
+<para>
+<informalexample>
+<programlisting>
+GypsyAccuracy *accuracy;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+accuracy = gypsy_accuracy_new (path);
+g_signal_connect (accuracy, "accuracy-changed", G_CALLBACK (accuracy_changed), NULL);
+
+. . .
+
+static void 
+accuracy_changed (GypsyAccuracy *accuracy, 
+GypsyAccuracyFields fields,
+double position,
+double horizontal,
+double vertical,
+gpointer userdata)
+{
+&nbsp;&nbsp;g_print ("horizontal: %f\n", (fields &amp; GYPSY_ACCURACY_FIELDS_HORIZONTAL) ? horizontal : -1.0);
+}
+</programlisting>
+</informalexample></para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GypsyAccuracy.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GypsyAccuracy-struct" role="struct">
+<title>GypsyAccuracy</title>
+<indexterm zone="GypsyAccuracy-struct"><primary sortas="GypsyAccuracy">GypsyAccuracy</primary></indexterm><programlisting>typedef struct _GypsyAccuracy GypsyAccuracy;</programlisting>
+<para>
+There are no public fields in <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link>.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-ACCURACY-DBUS-SERVICE--CAPS" role="macro">
+<title>GYPSY_ACCURACY_DBUS_SERVICE</title>
+<indexterm zone="GYPSY-ACCURACY-DBUS-SERVICE--CAPS"><primary sortas="GYPSY_ACCURACY_DBUS_SERVICE">GYPSY_ACCURACY_DBUS_SERVICE</primary></indexterm><programlisting>#define GYPSY_ACCURACY_DBUS_SERVICE "org.freedesktop.Gypsy"
+</programlisting>
+<para>
+A define containing the address of the Accuracy service</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS" role="macro">
+<title>GYPSY_ACCURACY_DBUS_INTERFACE</title>
+<indexterm zone="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS"><primary sortas="GYPSY_ACCURACY_DBUS_INTERFACE">GYPSY_ACCURACY_DBUS_INTERFACE</primary></indexterm><programlisting>#define GYPSY_ACCURACY_DBUS_INTERFACE "org.freedesktop.Gypsy.Accuracy"
+</programlisting>
+<para>
+A define containing the name of the Accuracy interface</para>
+<para>
+</para></refsect2>
+<refsect2 id="GypsyAccuracyFields" role="enum">
+<title>enum GypsyAccuracyFields</title>
+<indexterm zone="GypsyAccuracyFields"><primary sortas="GypsyAccuracyFields">GypsyAccuracyFields</primary></indexterm><programlisting>typedef enum {
+	GYPSY_ACCURACY_FIELDS_NONE = 0,
+	GYPSY_ACCURACY_FIELDS_POSITION = 1 &lt;&lt; 0,
+	GYPSY_ACCURACY_FIELDS_HORIZONTAL = 1 &lt;&lt; 1,
+	GYPSY_ACCURACY_FIELDS_VERTICAL = 1 &lt;&lt; 2,
+} GypsyAccuracyFields;
+</programlisting>
+<para>
+A bitmask telling which fields in the accuracy_changed callback are valid</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GYPSY-ACCURACY-FIELDS-NONE--CAPS" role="constant">
+<term><literal>GYPSY_ACCURACY_FIELDS_NONE</literal></term>
+<listitem><simpara> None of the fields are valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-ACCURACY-FIELDS-POSITION--CAPS" role="constant">
+<term><literal>GYPSY_ACCURACY_FIELDS_POSITION</literal></term>
+<listitem><simpara> The Position (3D) DOP field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-ACCURACY-FIELDS-HORIZONTAL--CAPS" role="constant">
+<term><literal>GYPSY_ACCURACY_FIELDS_HORIZONTAL</literal></term>
+<listitem><simpara> The Horizonal (2D) DOP field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-ACCURACY-FIELDS-VERTICAL--CAPS" role="constant">
+<term><literal>GYPSY_ACCURACY_FIELDS_VERTICAL</literal></term>
+<listitem><simpara> The Vertical (altitude) DOP field is valid
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-accuracy-new" role="function">
+<title>gypsy_accuracy_new ()</title>
+<indexterm zone="gypsy-accuracy-new"><primary sortas="gypsy_accuracy_new">gypsy_accuracy_new</primary></indexterm><programlisting><link linkend="GypsyAccuracy">GypsyAccuracy</link> *     gypsy_accuracy_new                  (const <link linkend="char">char</link> *object_path);</programlisting>
+<para>
+Creates a new <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link> object that listens for accuracy changes
+from the GPS found at <parameter>object_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>object_path</parameter>&#160;:</term>
+<listitem><simpara> Object path to the GPS device
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link> object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-accuracy-get-accuracy" role="function">
+<title>gypsy_accuracy_get_accuracy ()</title>
+<indexterm zone="gypsy-accuracy-get-accuracy"><primary sortas="gypsy_accuracy_get_accuracy">gypsy_accuracy_get_accuracy</primary></indexterm><programlisting><link linkend="GypsyAccuracyFields">GypsyAccuracyFields</link>  gypsy_accuracy_get_accuracy        (<link linkend="GypsyAccuracy">GypsyAccuracy</link> *accuracy,
+                                                         <link linkend="double">double</link> *pdop,
+                                                         <link linkend="double">double</link> *hdop,
+                                                         <link linkend="double">double</link> *vdop,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Obtains the current accuracy, if known, from the GPS device.  <parameter>pdop</parameter>, <parameter>hdop</parameter>
+and <parameter>vdop</parameter> can be <link linkend="NULL--CAPS"><type>NULL</type></link> if the result is not required.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>accuracy</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyAccuracy"><type>GypsyAccuracy</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>pdop</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the position DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>hdop</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the horizonal DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>vdop</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the vertical DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store a <link linkend="GError"><type>GError</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> Bitmask of <link linkend="GypsyAccuracyFields"><type>GypsyAccuracyFields</type></link> indicating what fields were set
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GypsyAccuracy.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GypsyAccuracy--object-path" role="property"><title>The <literal>&quot;object-path&quot;</literal> property</title>
+<indexterm zone="GypsyAccuracy--object-path"><primary sortas="GypsyAccuracy:object-path">GypsyAccuracy:object-path</primary></indexterm><programlisting>  &quot;object-path&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only</programlisting>
+<para>
+The path of the Gypsy GPS object</para>
+<para>
+</para><para>Default value: ""</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GypsyAccuracy.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GypsyAccuracy-accuracy-changed" role="signal"><title>The <literal>&quot;accuracy-changed&quot;</literal> signal</title>
+<indexterm zone="GypsyAccuracy-accuracy-changed"><primary sortas="GypsyAccuracy::accuracy-changed">GypsyAccuracy::accuracy-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsyAccuracy">GypsyAccuracy</link> *fields,
+                                                        <link linkend="gint">gint</link>           pdop,
+                                                        <link linkend="gdouble">gdouble</link>        hdop,
+                                                        <link linkend="gdouble">gdouble</link>        vdop,
+                                                        <link linkend="gdouble">gdouble</link>        arg4,
+                                                        <link linkend="gpointer">gpointer</link>       user_data)      : Run First / No Recursion</programlisting>
+<para>
+The ::accuracy-changed signal is emitted when the GPS device
+indicates that one or more of the accuracy fields has changed.
+The fields which have changed will be indicated in the <parameter>fields</parameter>
+bitmask.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>fields</parameter>&#160;:</term>
+<listitem><simpara> A bitmask of <link linkend="GypsyAccuracyFields"><type>GypsyAccuracyFields</type></link> indicating which of the following fields are valid
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>pdop</parameter>&#160;:</term>
+<listitem><simpara> The new position DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>hdop</parameter>&#160;:</term>
+<listitem><simpara> The new horizonal DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>vdop</parameter>&#160;:</term>
+<listitem><simpara> The new vertical DOP
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

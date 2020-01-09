@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Gypsy's Design</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="rn01.html" title="Gypsy Overview">
+<link rel="prev" href="rn01.html" title="Gypsy Overview">
+<link rel="next" href="why-not-gpsd.html" title="Design Flaws in GPSD">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="rn01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="why-not-gpsd.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry" title="Gypsy's Design">
+<a name="gypsy-design"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">Gypsy's Design</span></h2>
+<p>Gypsy's Design — An explanation of the design principles behind Gypsy.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="id499018"></a><p>
+From a users perspective Gypsy is designed to be powerful, yet lightweight enough to be used on low powered systems such as embedded devices. From an application developers perspective Gypsy is designed to be as simple to use as possible.
+</p>
+<p>
+When we talk about Gypsy, we are really talking about the gypsy-daemon program which is the program that actually connects to GPS devices, parses the data from them, and emits signals onto the D-Bus system bus for listening clients to receive. The figure below shows gypsy-daemon connected to two GPS devices, a Bluetooth one and a serial one, and three clients connected to the D-Bus system bus listening for GPS signals.
+</p>
+
+<img src="gypsy-design.png">
+<p>
+Gypsy's client D-Bus methods and signals are grouped into a number of related interfaces. These interfaces are:
+
+</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Server</span></p></td>
+<td><p>Methods that control the functions of the gypsy-daemon server.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Device</span></p></td>
+<td><p>Methods and signals that relate to the functions of the GPS device.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Position</span></p></td>
+<td><p>Methods and signals that relate to the current position of the GPS.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Course</span></p></td>
+<td><p>Methods and signals that relate to the current course of the GPS.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Accuracy</span></p></td>
+<td><p>Methods and signals that relate to the accuracy of the GPS.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">org.freedesktop.Gypsy.Satellite</span></p></td>
+<td><p>Methods and signals that relate to the satellites that the GPS can see.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>
+</p>
+<p>
+</p>
+<p>
+Gypsy seperates these interfaces instead of using on large interface so that clients only need to listen for the signals in which they are interested in. This allows clients to remain idle for longer periods, only being woken up when they receive a signal they are interested in. If the client is only interested in when a GPS fix changes, it will not be woken up when the position has changed. Allowing clients to sleep for as long as possible helps to keep CPU usage and conserve power, which is essential for using on an embedded system.
+</p>
+<p>
+Using D-Bus also enables Gypsy to be used from any language that has D-Bus support. The LibGypsy library uses dbus-glib to provide C support for it, but support also exists for C++, C# and Python to name a few.
+</p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="GypsyPosition">
+<refmeta>
+<refentrytitle role="top_of_page" id="GypsyPosition.top_of_page">GypsyPosition</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GYPSY Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GypsyPosition</refname>
+<refpurpose>Object for obtaining positions from gypsy-daemon</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GypsyPosition.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GypsyPosition-struct">GypsyPosition</link>;
+#define             <link linkend="GYPSY-POSITION-DBUS-INTERFACE--CAPS">GYPSY_POSITION_DBUS_INTERFACE</link>
+#define             <link linkend="GYPSY-POSITION-DBUS-SERVICE--CAPS">GYPSY_POSITION_DBUS_SERVICE</link>
+enum                <link linkend="GypsyPositionFields">GypsyPositionFields</link>;
+<link linkend="GypsyPosition">GypsyPosition</link> *     <link linkend="gypsy-position-new">gypsy_position_new</link>                  (const <link linkend="char">char</link> *object_path);
+<link linkend="GypsyPositionFields">GypsyPositionFields</link>  <link linkend="gypsy-position-get-position">gypsy_position_get_position</link>        (<link linkend="GypsyPosition">GypsyPosition</link> *position,
+                                                         <link linkend="int">int</link> *timestamp,
+                                                         <link linkend="double">double</link> *latitude,
+                                                         <link linkend="double">double</link> *longitude,
+                                                         <link linkend="double">double</link> *altitude,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GypsyPosition.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GypsyPosition
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GypsyPosition.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GypsyPosition--object-path">object-path</link>&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GypsyPosition.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GypsyPosition-position-changed">position-changed</link>&quot;                               : Run First / No Recursion
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GypsyPosition.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GypsyPosition"><type>GypsyPosition</type></link> is used whenever the client program wishes to know about
+GPS position changes. It can report the current position, and has a signal
+to notify listeners of changes.
+</para>
+<para>
+A <link linkend="GypsyPosition"><type>GypsyPosition</type></link> object is created using <link linkend="gypsy-position-new"><function>gypsy_position_new()</function></link> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<link linkend="gypsy-control-create"><function>gypsy_control_create()</function></link> function. The client can then find out about the
+position with <link linkend="gypsy-position-get-position"><function>gypsy_position_get_position()</function></link>.
+</para>
+<para>
+As the position information changes <link linkend="GypsyPosition"><type>GypsyPosition</type></link> will emit the 
+position-changed signal. This signal contains the fix position if 
+gypsy-daemon knows it. It has a fields paramater which is a bitmask of
+<link linkend="GypsyPositionFields"><type>GypsyPositionFields</type></link> which indicates which of the latitude, longitude or
+altitude contains valid information. The timestamp will always be valid
+if it is greater than 0.
+</para>
+<para>
+<informalexample>
+<programlisting>
+GypsyPosition *position;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+position = gypsy_position_new (path);
+g_signal_connect (position, "position-changed", G_CALLBACK (position_changed), NULL);
+
+. . .
+
+static void position_changed (GypsyPosition *position, 
+GypsyPositionFields fields,
+int timestamp,
+double latitude,
+double longitude,
+double altitude,
+gpointer userdata)
+{
+&nbsp;&nbsp;g_print ("latitude, longitude (%f, %f)\n", (fields &amp; GYPSY_POSITION_FIELDS_LATITUDE) ? latitude : -1.0, (fields &amp; GYPSY_POSITION_FIELDS_LONGITUDE) ? longitude : -1.0);
+}
+</programlisting>
+</informalexample></para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GypsyPosition.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GypsyPosition-struct" role="struct">
+<title>GypsyPosition</title>
+<indexterm zone="GypsyPosition-struct"><primary sortas="GypsyPosition">GypsyPosition</primary></indexterm><programlisting>typedef struct _GypsyPosition GypsyPosition;</programlisting>
+<para>
+There are no public fields in <link linkend="GypsyPosition"><type>GypsyPosition</type></link>.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-POSITION-DBUS-INTERFACE--CAPS" role="macro">
+<title>GYPSY_POSITION_DBUS_INTERFACE</title>
+<indexterm zone="GYPSY-POSITION-DBUS-INTERFACE--CAPS"><primary sortas="GYPSY_POSITION_DBUS_INTERFACE">GYPSY_POSITION_DBUS_INTERFACE</primary></indexterm><programlisting>#define GYPSY_POSITION_DBUS_INTERFACE "org.freedesktop.Gypsy.Position"
+</programlisting>
+<para>
+A define containing the name of the Position interface</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-POSITION-DBUS-SERVICE--CAPS" role="macro">
+<title>GYPSY_POSITION_DBUS_SERVICE</title>
+<indexterm zone="GYPSY-POSITION-DBUS-SERVICE--CAPS"><primary sortas="GYPSY_POSITION_DBUS_SERVICE">GYPSY_POSITION_DBUS_SERVICE</primary></indexterm><programlisting>#define GYPSY_POSITION_DBUS_SERVICE "org.freedesktop.Gypsy"
+</programlisting>
+<para>
+A define containing the address of the Position service</para>
+<para>
+</para></refsect2>
+<refsect2 id="GypsyPositionFields" role="enum">
+<title>enum GypsyPositionFields</title>
+<indexterm zone="GypsyPositionFields"><primary sortas="GypsyPositionFields">GypsyPositionFields</primary></indexterm><programlisting>typedef enum {
+	GYPSY_POSITION_FIELDS_NONE = 0,
+	GYPSY_POSITION_FIELDS_LATITUDE = 1 &lt;&lt; 0,
+	GYPSY_POSITION_FIELDS_LONGITUDE = 1 &lt;&lt; 1,
+	GYPSY_POSITION_FIELDS_ALTITUDE = 1 &lt;&lt; 2
+} GypsyPositionFields;
+</programlisting>
+<para>
+A bitmask telling which fields in the position_changed callback are valid</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GYPSY-POSITION-FIELDS-NONE--CAPS" role="constant">
+<term><literal>GYPSY_POSITION_FIELDS_NONE</literal></term>
+<listitem><simpara> None of the fields are valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-POSITION-FIELDS-LATITUDE--CAPS" role="constant">
+<term><literal>GYPSY_POSITION_FIELDS_LATITUDE</literal></term>
+<listitem><simpara> The latitude field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-POSITION-FIELDS-LONGITUDE--CAPS" role="constant">
+<term><literal>GYPSY_POSITION_FIELDS_LONGITUDE</literal></term>
+<listitem><simpara> The longitude field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-POSITION-FIELDS-ALTITUDE--CAPS" role="constant">
+<term><literal>GYPSY_POSITION_FIELDS_ALTITUDE</literal></term>
+<listitem><simpara> The altitude field is valid
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-position-new" role="function">
+<title>gypsy_position_new ()</title>
+<indexterm zone="gypsy-position-new"><primary sortas="gypsy_position_new">gypsy_position_new</primary></indexterm><programlisting><link linkend="GypsyPosition">GypsyPosition</link> *     gypsy_position_new                  (const <link linkend="char">char</link> *object_path);</programlisting>
+<para>
+Creates a new <link linkend="GypsyPosition"><type>GypsyPosition</type></link> object that listens for position changes
+from the GPS found at <parameter>object_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>object_path</parameter>&#160;:</term>
+<listitem><simpara> Object path to the GPS device
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GypsyPosition"><type>GypsyPosition</type></link> object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-position-get-position" role="function">
+<title>gypsy_position_get_position ()</title>
+<indexterm zone="gypsy-position-get-position"><primary sortas="gypsy_position_get_position">gypsy_position_get_position</primary></indexterm><programlisting><link linkend="GypsyPositionFields">GypsyPositionFields</link>  gypsy_position_get_position        (<link linkend="GypsyPosition">GypsyPosition</link> *position,
+                                                         <link linkend="int">int</link> *timestamp,
+                                                         <link linkend="double">double</link> *latitude,
+                                                         <link linkend="double">double</link> *longitude,
+                                                         <link linkend="double">double</link> *altitude,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Obtains the current position, if known, from the GPS device.
+<parameter>timestamp</parameter>, <parameter>latitude</parameter>, <parameter>longitude</parameter> and <parameter>altitude</parameter> can be <link linkend="NULL--CAPS"><type>NULL</type></link> if the result
+is not required.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>position</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyPosition"><type>GypsyPosition</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timestamp</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the timestamp
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>latitude</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the latitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>longitude</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the longitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>altitude</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store the altitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> Pointer to store a <link linkend="GError"><type>GError</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> Bitmask of <link linkend="GypsyPositionFields"><type>GypsyPositionFields</type></link> indicating what field was set
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GypsyPosition.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GypsyPosition--object-path" role="property"><title>The <literal>&quot;object-path&quot;</literal> property</title>
+<indexterm zone="GypsyPosition--object-path"><primary sortas="GypsyPosition:object-path">GypsyPosition:object-path</primary></indexterm><programlisting>  &quot;object-path&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only</programlisting>
+<para>
+The path of the Gypsy GPS object</para>
+<para>
+</para><para>Default value: ""</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GypsyPosition.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GypsyPosition-position-changed" role="signal"><title>The <literal>&quot;position-changed&quot;</literal> signal</title>
+<indexterm zone="GypsyPosition-position-changed"><primary sortas="GypsyPosition::position-changed">GypsyPosition::position-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsyPosition">GypsyPosition</link> *fields,
+                                                        <link linkend="gint">gint</link>           timestamp,
+                                                        <link linkend="gint">gint</link>           latitude,
+                                                        <link linkend="gdouble">gdouble</link>        longitude,
+                                                        <link linkend="gdouble">gdouble</link>        altitude,
+                                                        <link linkend="gdouble">gdouble</link>        arg5,
+                                                        <link linkend="gpointer">gpointer</link>       user_data)      : Run First / No Recursion</programlisting>
+<para>
+The ::position-changed signal is emitted when the GPS device
+indicates that one or more of the position fields has changed.
+The fields which have changed will be indicated in the <parameter>fields</parameter>
+bitmask.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>fields</parameter>&#160;:</term>
+<listitem><simpara> A bitmask of <link linkend="GypsyPositionFields"><type>GypsyPositionFields</type></link> indicating which of the following fields are valid
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timestamp</parameter>&#160;:</term>
+<listitem><simpara> The timestamp when this change occurred
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>latitude</parameter>&#160;:</term>
+<listitem><simpara> The new latitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>longitude</parameter>&#160;:</term>
+<listitem><simpara> The new longitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>altitude</parameter>&#160;:</term>
+<listitem><simpara> The new altitude
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

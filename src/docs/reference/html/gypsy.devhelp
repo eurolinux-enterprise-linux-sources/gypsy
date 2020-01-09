@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="Gypsy Reference Manual" link="index.html" author="Iain HolmesRoss Burton" name="gypsy">
+  <chapters>
+    <sub name="Gypsy Overview" link="rn01.html">
+      <sub name="Gypsy's Design" link="gypsy-design.html"/>
+      <sub name="Design Flaws in GPSD" link="why-not-gpsd.html"/>
+    </sub>
+    <sub name="Tutorials" link="rn02.html">
+      <sub name="Programming Gypsy With Python" link="ch01.html">
+        <sub name="Overview of Gypsy" link="ch01.html#overview"/>
+        <sub name="Connecting to a GPS" link="connecting.html"/>
+        <sub name="Getting Your Location" link="gps.html"/>
+      </sub>
+    </sub>
+    <sub name="Gypsy Server Interface" link="gypsy-server-interfaces.html">
+      <sub name="org.freedesktop.Gypsy.Server" link="Server.html"/>
+    </sub>
+    <sub name="Gypsy Client Interface" link="gypsy-client-interfaces.html">
+      <sub name="org.freedesktop.Gypsy.Accuracy" link="Accuracy.html"/>
+      <sub name="org.freedesktop.Gypsy.Course" link="Course.html"/>
+      <sub name="org.freedesktop.Gypsy.Device" link="Device.html"/>
+      <sub name="org.freedesktop.Gypsy.Position" link="Position.html"/>
+      <sub name="org.freedesktop.Gypsy.Satellite" link="Satellite.html"/>
+      <sub name="org.freedesktop.Gypsy.Time" link="Time.html"/>
+    </sub>
+    <sub name="LibGypsy API Reference" link="rn05.html">
+      <sub name="Gypsy-Daemon Control" link="ch02.html">
+        <sub name="GypsyControl" link="GypsyControl.html"/>
+      </sub>
+      <sub name="GPS Data Objects" link="ch03.html">
+        <sub name="GypsyDevice" link="GypsyDevice.html"/>
+        <sub name="GypsyAccuracy" link="GypsyAccuracy.html"/>
+        <sub name="GypsyCourse" link="GypsyCourse.html"/>
+        <sub name="GypsyPosition" link="GypsyPosition.html"/>
+        <sub name="GypsySatellite" link="GypsySatellite.html"/>
+        <sub name="GypsyTime" link="gypsy-GypsyTime.html"/>
+      </sub>
+    </sub>
+  </chapters>
+  <functions>
+    <function name="Create ()" link="Server.html#Server.Create"/>
+    <function name="Shutdown ()" link="Server.html#Server.Shutdown"/>
+    <function name="GetAccuracy ()" link="Accuracy.html#Accuracy.GetAccuracy"/>
+    <function name="The AccuracyChanged signal" link="Accuracy.html#Accuracy::AccuracyChanged"/>
+    <function name="GetCourse ()" link="Course.html#Course.GetCourse"/>
+    <function name="The CourseChanged signal" link="Course.html#Course::CourseChanged"/>
+    <function name="Start ()" link="Device.html#Device.Start"/>
+    <function name="Stop ()" link="Device.html#Device.Stop"/>
+    <function name="GetFixStatus ()" link="Device.html#Device.GetFixStatus"/>
+    <function name="GetConnectionStatus ()" link="Device.html#Device.GetConnectionStatus"/>
+    <function name="The FixStatusChanged signal" link="Device.html#Device::FixStatusChanged"/>
+    <function name="The ConnectionStatusChanged signal" link="Device.html#Device::ConnectionStatusChanged"/>
+    <function name="GetPosition ()" link="Position.html#Position.GetPosition"/>
+    <function name="The PositionChanged signal" link="Position.html#Position::PositionChanged"/>
+    <function name="GetSatellites ()" link="Satellite.html#Satellite.GetSatellites"/>
+    <function name="The SatellitesChanged signal" link="Satellite.html#Satellite::SatellitesChanged"/>
+    <function name="GetTime ()" link="Time.html#Time.GetTime"/>
+    <function name="The TimeChanged signal" link="Time.html#Time::TimeChanged"/>
+    <function name="GypsyControl" link="GypsyControl.html#GypsyControl-struct"/>
+    <function name="GYPSY_CONTROL_DBUS_SERVICE" link="GypsyControl.html#GYPSY-CONTROL-DBUS-SERVICE--CAPS"/>
+    <function name="GYPSY_CONTROL_DBUS_PATH" link="GypsyControl.html#GYPSY-CONTROL-DBUS-PATH--CAPS"/>
+    <function name="GYPSY_CONTROL_DBUS_INTERFACE" link="GypsyControl.html#GYPSY-CONTROL-DBUS-INTERFACE--CAPS"/>
+    <function name="gypsy_control_get_default ()" link="GypsyControl.html#gypsy-control-get-default"/>
+    <function name="gypsy_control_create ()" link="GypsyControl.html#gypsy-control-create"/>
+    <function name="GypsyDevice" link="GypsyDevice.html#GypsyDevice-struct"/>
+    <function name="GYPSY_DEVICE_DBUS_SERVICE" link="GypsyDevice.html#GYPSY-DEVICE-DBUS-SERVICE--CAPS"/>
+    <function name="GYPSY_DEVICE_DBUS_INTERFACE" link="GypsyDevice.html#GYPSY-DEVICE-DBUS-INTERFACE--CAPS"/>
+    <function name="enum GypsyDeviceFixStatus" link="GypsyDevice.html#GypsyDeviceFixStatus"/>
+    <function name="gypsy_device_new ()" link="GypsyDevice.html#gypsy-device-new"/>
+    <function name="gypsy_device_get_connection_status ()" link="GypsyDevice.html#gypsy-device-get-connection-status"/>
+    <function name="gypsy_device_get_fix_status ()" link="GypsyDevice.html#gypsy-device-get-fix-status"/>
+    <function name="gypsy_device_start ()" link="GypsyDevice.html#gypsy-device-start"/>
+    <function name="gypsy_device_stop ()" link="GypsyDevice.html#gypsy-device-stop"/>
+    <function name="The &quot;object-path&quot; property" link="GypsyDevice.html#GypsyDevice--object-path"/>
+    <function name="The &quot;connection-changed&quot; signal" link="GypsyDevice.html#GypsyDevice-connection-changed"/>
+    <function name="The &quot;fix-status-changed&quot; signal" link="GypsyDevice.html#GypsyDevice-fix-status-changed"/>
+    <function name="GypsyAccuracy" link="GypsyAccuracy.html#GypsyAccuracy-struct"/>
+    <function name="GYPSY_ACCURACY_DBUS_SERVICE" link="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-SERVICE--CAPS"/>
+    <function name="GYPSY_ACCURACY_DBUS_INTERFACE" link="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-INTERFACE--CAPS"/>
+    <function name="enum GypsyAccuracyFields" link="GypsyAccuracy.html#GypsyAccuracyFields"/>
+    <function name="gypsy_accuracy_new ()" link="GypsyAccuracy.html#gypsy-accuracy-new"/>
+    <function name="gypsy_accuracy_get_accuracy ()" link="GypsyAccuracy.html#gypsy-accuracy-get-accuracy"/>
+    <function name="The &quot;object-path&quot; property" link="GypsyAccuracy.html#GypsyAccuracy--object-path"/>
+    <function name="The &quot;accuracy-changed&quot; signal" link="GypsyAccuracy.html#GypsyAccuracy-accuracy-changed"/>
+    <function name="GypsyCourse" link="GypsyCourse.html#GypsyCourse-struct"/>
+    <function name="GYPSY_COURSE_DBUS_INTERFACE" link="GypsyCourse.html#GYPSY-COURSE-DBUS-INTERFACE--CAPS"/>
+    <function name="GYPSY_COURSE_DBUS_SERVICE" link="GypsyCourse.html#GYPSY-COURSE-DBUS-SERVICE--CAPS"/>
+    <function name="enum GypsyCourseFields" link="GypsyCourse.html#GypsyCourseFields"/>
+    <function name="gypsy_course_new ()" link="GypsyCourse.html#gypsy-course-new"/>
+    <function name="gypsy_course_get_course ()" link="GypsyCourse.html#gypsy-course-get-course"/>
+    <function name="The &quot;object-path&quot; property" link="GypsyCourse.html#GypsyCourse--object-path"/>
+    <function name="The &quot;course-changed&quot; signal" link="GypsyCourse.html#GypsyCourse-course-changed"/>
+    <function name="GypsyPosition" link="GypsyPosition.html#GypsyPosition-struct"/>
+    <function name="GYPSY_POSITION_DBUS_INTERFACE" link="GypsyPosition.html#GYPSY-POSITION-DBUS-INTERFACE--CAPS"/>
+    <function name="GYPSY_POSITION_DBUS_SERVICE" link="GypsyPosition.html#GYPSY-POSITION-DBUS-SERVICE--CAPS"/>
+    <function name="enum GypsyPositionFields" link="GypsyPosition.html#GypsyPositionFields"/>
+    <function name="gypsy_position_new ()" link="GypsyPosition.html#gypsy-position-new"/>
+    <function name="gypsy_position_get_position ()" link="GypsyPosition.html#gypsy-position-get-position"/>
+    <function name="The &quot;object-path&quot; property" link="GypsyPosition.html#GypsyPosition--object-path"/>
+    <function name="The &quot;position-changed&quot; signal" link="GypsyPosition.html#GypsyPosition-position-changed"/>
+    <function name="GypsySatellite" link="GypsySatellite.html#GypsySatellite-struct"/>
+    <function name="GYPSY_SATELLITE_DBUS_INTERFACE" link="GypsySatellite.html#GYPSY-SATELLITE-DBUS-INTERFACE--CAPS"/>
+    <function name="GYPSY_SATELLITE_DBUS_SERVICE" link="GypsySatellite.html#GYPSY-SATELLITE-DBUS-SERVICE--CAPS"/>
+    <function name="GypsySatelliteDetails" link="GypsySatellite.html#GypsySatelliteDetails"/>
+    <function name="gypsy_satellite_new ()" link="GypsySatellite.html#gypsy-satellite-new"/>
+    <function name="gypsy_satellite_get_satellites ()" link="GypsySatellite.html#gypsy-satellite-get-satellites"/>
+    <function name="gypsy_satellite_free_satellite_array ()" link="GypsySatellite.html#gypsy-satellite-free-satellite-array"/>
+    <function name="The &quot;object-path&quot; property" link="GypsySatellite.html#GypsySatellite--object-path"/>
+    <function name="The &quot;satellites-changed&quot; signal" link="GypsySatellite.html#GypsySatellite-satellites-changed"/>
+    <function name="GypsyTime" link="gypsy-GypsyTime.html#GypsyTime"/>
+    <function name="GYPSY_TIME_DBUS_SERVICE" link="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-SERVICE--CAPS"/>
+    <function name="GYPSY_TIME_DBUS_INTERFACE" link="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-INTERFACE--CAPS"/>
+    <function name="gypsy_time_new ()" link="gypsy-GypsyTime.html#gypsy-time-new"/>
+    <function name="gypsy_time_get_time ()" link="gypsy-GypsyTime.html#gypsy-time-get-time"/>
+  </functions>
+</book>

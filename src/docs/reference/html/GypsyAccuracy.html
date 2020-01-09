@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsyAccuracy</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch03.html" title="GPS Data Objects">
+<link rel="prev" href="GypsyDevice.html" title="GypsyDevice">
+<link rel="next" href="GypsyCourse.html" title="GypsyCourse">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GypsyDevice.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="GypsyCourse.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GypsyAccuracy.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GypsyAccuracy.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GypsyAccuracy.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GypsyAccuracy.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GypsyAccuracy.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsyAccuracy">
+<a name="GypsyAccuracy"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GypsyAccuracy.top_of_page"></a>GypsyAccuracy</span></h2>
+<p>GypsyAccuracy — Object for obtaining accuracy information from gypsy-daemon</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GypsyAccuracy.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GypsyAccuracy.html#GypsyAccuracy-struct" title="GypsyAccuracy">GypsyAccuracy</a>;
+#define             <a class="link" href="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-SERVICE--CAPS" title="GYPSY_ACCURACY_DBUS_SERVICE">GYPSY_ACCURACY_DBUS_SERVICE</a>
+#define             <a class="link" href="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-INTERFACE--CAPS" title="GYPSY_ACCURACY_DBUS_INTERFACE">GYPSY_ACCURACY_DBUS_INTERFACE</a>
+enum                <a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields">GypsyAccuracyFields</a>;
+<a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy">GypsyAccuracy</a> *     <a class="link" href="GypsyAccuracy.html#gypsy-accuracy-new" title="gypsy_accuracy_new ()">gypsy_accuracy_new</a>                  (const char *object_path);
+<a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields">GypsyAccuracyFields</a>  <a class="link" href="GypsyAccuracy.html#gypsy-accuracy-get-accuracy" title="gypsy_accuracy_get_accuracy ()">gypsy_accuracy_get_accuracy</a>        (<a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy">GypsyAccuracy</a> *accuracy,
+                                                         double *pdop,
+                                                         double *hdop,
+                                                         double *vdop,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GypsyAccuracy.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GypsyAccuracy
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GypsyAccuracy.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyAccuracy.html#GypsyAccuracy--object-path" title='The "object-path" property'>object-path</a>"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GypsyAccuracy.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyAccuracy.html#GypsyAccuracy-accuracy-changed" title='The "accuracy-changed" signal'>accuracy-changed</a>"                               : Run First / No Recursion
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GypsyAccuracy.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a> is used whenever the client program wishes to know about GPS
+accuracy changes. It can report the current accuracy, and has a signal to
+notify listeners to changes. The accuracy consists of positional accuracy,
+horizontal accuracy (on the latitude/longitude plane) and vertical 
+(altitudinal) accuracy.
+</p>
+<p>
+A <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a> object is created using <a class="link" href="GypsyAccuracy.html#gypsy-accuracy-new" title="gypsy_accuracy_new ()"><code class="function">gypsy_accuracy_new()</code></a> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a> function. The client can then find out about the
+course with <a class="link" href="GypsyAccuracy.html#gypsy-accuracy-get-accuracy" title="gypsy_accuracy_get_accuracy ()"><code class="function">gypsy_accuracy_get_accuracy()</code></a>.
+</p>
+<p>
+As the accuracy information changes <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a> will emit the 
+accuracy-changed signal. This signal contains the accuracy information if 
+gypsy-daemon knows it. It has a fields paramater which is a bitmask of
+<a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields"><span class="type">GypsyAccuracyFields</span></a> which indicates which of the position, horizontal or
+vertical contains valid information. 
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+GypsyAccuracy *accuracy;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+accuracy = gypsy_accuracy_new (path);
+g_signal_connect (accuracy, "accuracy-changed", G_CALLBACK (accuracy_changed), NULL);
+
+. . .
+
+static void 
+accuracy_changed (GypsyAccuracy *accuracy, 
+GypsyAccuracyFields fields,
+double position,
+double horizontal,
+double vertical,
+gpointer userdata)
+{
+  g_print ("horizontal: %f\n", (fields &amp; GYPSY_ACCURACY_FIELDS_HORIZONTAL) ? horizontal : -1.0);
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GypsyAccuracy.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsyAccuracy">
+<a name="GypsyAccuracy-struct"></a><h3>GypsyAccuracy</h3>
+<pre class="programlisting">typedef struct _GypsyAccuracy GypsyAccuracy;</pre>
+<p>
+There are no public fields in <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_ACCURACY_DBUS_SERVICE">
+<a name="GYPSY-ACCURACY-DBUS-SERVICE--CAPS"></a><h3>GYPSY_ACCURACY_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_ACCURACY_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the address of the Accuracy service</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_ACCURACY_DBUS_INTERFACE">
+<a name="GYPSY-ACCURACY-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_ACCURACY_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_ACCURACY_DBUS_INTERFACE "org.freedesktop.Gypsy.Accuracy"
+</pre>
+<p>
+A define containing the name of the Accuracy interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="enum GypsyAccuracyFields">
+<a name="GypsyAccuracyFields"></a><h3>enum GypsyAccuracyFields</h3>
+<pre class="programlisting">typedef enum {
+	GYPSY_ACCURACY_FIELDS_NONE = 0,
+	GYPSY_ACCURACY_FIELDS_POSITION = 1 &lt;&lt; 0,
+	GYPSY_ACCURACY_FIELDS_HORIZONTAL = 1 &lt;&lt; 1,
+	GYPSY_ACCURACY_FIELDS_VERTICAL = 1 &lt;&lt; 2,
+} GypsyAccuracyFields;
+</pre>
+<p>
+A bitmask telling which fields in the accuracy_changed callback are valid</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="GYPSY-ACCURACY-FIELDS-NONE--CAPS"></a><span class="term"><code class="literal">GYPSY_ACCURACY_FIELDS_NONE</code></span></p></td>
+<td> None of the fields are valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-ACCURACY-FIELDS-POSITION--CAPS"></a><span class="term"><code class="literal">GYPSY_ACCURACY_FIELDS_POSITION</code></span></p></td>
+<td> The Position (3D) DOP field is valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-ACCURACY-FIELDS-HORIZONTAL--CAPS"></a><span class="term"><code class="literal">GYPSY_ACCURACY_FIELDS_HORIZONTAL</code></span></p></td>
+<td> The Horizonal (2D) DOP field is valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-ACCURACY-FIELDS-VERTICAL--CAPS"></a><span class="term"><code class="literal">GYPSY_ACCURACY_FIELDS_VERTICAL</code></span></p></td>
+<td> The Vertical (altitude) DOP field is valid
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_accuracy_new ()">
+<a name="gypsy-accuracy-new"></a><h3>gypsy_accuracy_new ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy">GypsyAccuracy</a> *     gypsy_accuracy_new                  (const char *object_path);</pre>
+<p>
+Creates a new <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a> object that listens for accuracy changes
+from the GPS found at <em class="parameter"><code>object_path</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object_path</code></em> :</span></p></td>
+<td> Object path to the GPS device
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a> object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_accuracy_get_accuracy ()">
+<a name="gypsy-accuracy-get-accuracy"></a><h3>gypsy_accuracy_get_accuracy ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields">GypsyAccuracyFields</a>  gypsy_accuracy_get_accuracy        (<a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy">GypsyAccuracy</a> *accuracy,
+                                                         double *pdop,
+                                                         double *hdop,
+                                                         double *vdop,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Obtains the current accuracy, if known, from the GPS device.  <em class="parameter"><code>pdop</code></em>, <em class="parameter"><code>hdop</code></em>
+and <em class="parameter"><code>vdop</code></em> can be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> if the result is not required.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>accuracy</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy"><span class="type">GypsyAccuracy</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pdop</code></em> :</span></p></td>
+<td> Pointer to store the position DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hdop</code></em> :</span></p></td>
+<td> Pointer to store the horizonal DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>vdop</code></em> :</span></p></td>
+<td> Pointer to store the vertical DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> Pointer to store a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> Bitmask of <a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields"><span class="type">GypsyAccuracyFields</span></a> indicating what fields were set
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GypsyAccuracy.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "object-path" property'>
+<a name="GypsyAccuracy--object-path"></a><h3>The <code class="literal">"object-path"</code> property</h3>
+<pre class="programlisting">  "object-path"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only</pre>
+<p>
+The path of the Gypsy GPS object</p>
+<p>
+</p>
+<p>Default value: ""</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GypsyAccuracy.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "accuracy-changed" signal'>
+<a name="GypsyAccuracy-accuracy-changed"></a><h3>The <code class="literal">"accuracy-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GypsyAccuracy.html" title="GypsyAccuracy">GypsyAccuracy</a> *fields,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a>           pdop,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>        hdop,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>        vdop,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>        arg4,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>       user_data)      : Run First / No Recursion</pre>
+<p>
+The ::accuracy-changed signal is emitted when the GPS device
+indicates that one or more of the accuracy fields has changed.
+The fields which have changed will be indicated in the <em class="parameter"><code>fields</code></em>
+bitmask.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fields</code></em> :</span></p></td>
+<td> A bitmask of <a class="link" href="GypsyAccuracy.html#GypsyAccuracyFields" title="enum GypsyAccuracyFields"><span class="type">GypsyAccuracyFields</span></a> indicating which of the following fields are valid
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pdop</code></em> :</span></p></td>
+<td> The new position DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hdop</code></em> :</span></p></td>
+<td> The new horizonal DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>vdop</code></em> :</span></p></td>
+<td> The new vertical DOP
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

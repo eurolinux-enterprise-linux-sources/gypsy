@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reference id="gypsy-server-interfaces">
+  <title>Gypsy Server Interface</title>
+  <refentry id="Server">
+    <refmeta>
+      <refentrytitle role="top_of_page">org.freedesktop.Gypsy.Server</refentrytitle>
+    </refmeta>
+    <refnamediv>
+      <refname>org.freedesktop.Gypsy.Server</refname>
+      <refpurpose>Server interface</refpurpose>
+    </refnamediv>
+    <refsynopsisdiv role="synopsis">
+      <title role="synopsis.title">Methods</title>
+      <synopsis><link linkend="Server.Create">Create</link>   (in  's'device,
+          out 'o'path)
+<link linkend="Server.Shutdown">Shutdown</link> (in  'o'path)
+</synopsis>
+    </refsynopsisdiv>
+    <refsect1 role="signal_proto">
+      <title role="signal_proto.title">Signals</title>
+      <synopsis/>
+    </refsect1>
+    <refsect1 role="impl_interfaces">
+      <title role="impl_interfaces.title">Implemented Interfaces</title>
+      <para>org.freedesktop.Gypsy.Server implements
+    org.freedesktop.DBus.Introspectable,
+    org.freedesktop.DBus.Properties
+    </para>
+    </refsect1>
+    <refsect1 role="properties">
+      <title role="properties.title">Properties</title>
+      <synopsis/>
+    </refsect1>
+    <refsect1 role="desc">
+      <title role="desc.title">Description</title>
+      <para>
+      <para>
+        The Server object is used to connect to and obtain the object path of
+        specific GPS devices.
+      </para>
+    </para>
+    </refsect1>
+    <refsect1 role="details">
+      <title role="details.title">Details</title>
+      <refsect2><title><anchor role="function" id="Server.Create"/>Create ()</title><indexterm><primary>Create</primary><secondary>Server</secondary></indexterm><programlisting>Create (in  's' device,
+        out 'o' path)</programlisting>
+          Connect to the specified GPS device, and create an object implementing
+          the <xref linkend="gypsy-client-interfaces"/>.
+        <variablelist role="params"><varlistentry><term><parameter>device</parameter>:</term><listitem><para>
+            A string identifying the device to connect to. For Bluetooth devices
+            this is the Bluetooth address (such as 00:11:22:33:44:55), for
+            serial devices it is the device node (such as /dev/ttyS0).
+          </para></listitem></varlistentry><varlistentry><term><parameter>path</parameter>:</term><listitem><para>
+            The object path of the GPS device.
+          </para></listitem></varlistentry></variablelist></refsect2>
+      <refsect2><title><anchor role="function" id="Server.Shutdown"/>Shutdown ()</title><indexterm><primary>Shutdown</primary><secondary>Server</secondary></indexterm><programlisting>Shutdown (in  'o' path)</programlisting>
+          Disconnect from the specified GPS device.
+        <variablelist role="params"><varlistentry><term><parameter>path</parameter>:</term><listitem><para>
+            The object path of the GPS device.
+          </para></listitem></varlistentry></variablelist></refsect2>
+    </refsect1>
+    <refsect1 role="signals">
+      <title role="signals.title">Signal Details</title>
+    </refsect1>
+    <refsect1 role="property_details">
+      <title role="property_details.title">Property Details</title>
+    </refsect1>
+  </refentry>
+</reference>

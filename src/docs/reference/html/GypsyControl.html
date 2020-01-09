@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsyControl</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="prev" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="next" href="ch03.html" title="GPS Data Objects">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch02.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="ch03.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GypsyControl.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GypsyControl.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GypsyControl.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsyControl">
+<a name="GypsyControl"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GypsyControl.top_of_page"></a>GypsyControl</span></h2>
+<p>GypsyControl — Control object for gypsy-daemon</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GypsyControl.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GypsyControl.html#GypsyControl-struct" title="GypsyControl">GypsyControl</a>;
+#define             <a class="link" href="GypsyControl.html#GYPSY-CONTROL-DBUS-SERVICE--CAPS" title="GYPSY_CONTROL_DBUS_SERVICE">GYPSY_CONTROL_DBUS_SERVICE</a>
+#define             <a class="link" href="GypsyControl.html#GYPSY-CONTROL-DBUS-PATH--CAPS" title="GYPSY_CONTROL_DBUS_PATH">GYPSY_CONTROL_DBUS_PATH</a>
+#define             <a class="link" href="GypsyControl.html#GYPSY-CONTROL-DBUS-INTERFACE--CAPS" title="GYPSY_CONTROL_DBUS_INTERFACE">GYPSY_CONTROL_DBUS_INTERFACE</a>
+<a class="link" href="GypsyControl.html" title="GypsyControl">GypsyControl</a> *      <a class="link" href="GypsyControl.html#gypsy-control-get-default" title="gypsy_control_get_default ()">gypsy_control_get_default</a>           (void);
+char *              <a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()">gypsy_control_create</a>                (<a class="link" href="GypsyControl.html" title="GypsyControl">GypsyControl</a> *control,
+                                                         const char *device_name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GypsyControl.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GypsyControl
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GypsyControl.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a> is the object that controls the gypsy-daemon process. 
+It is a singleton object, meaning that there will only be one instance of it
+per application. Once the object has been created (or referenced if it 
+had already been created for the application) with 
+<a class="link" href="GypsyControl.html#gypsy-control-get-default" title="gypsy_control_get_default ()"><code class="function">gypsy_control_get_default()</code></a>, it can be used to tell gypsy-daemon what GPS
+device to connect to with <a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a>. This call returns the
+D-Bus object path to the GPS object in gypsy-daemon. This object path is then used to 
+create other objects, such as <a class="link" href="GypsyPosition.html" title="GypsyPosition"><span class="type">GypsyPosition</span></a>, or <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a>.
+</p>
+<p>
+As gypsy-daemon is able to connect to multiple GPS devices, the one
+<a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a> can be used to create them, returning a different path for each
+GPS device. Gypsy-daemon can connect to both serial port devices which have
+an entry in <code class="filename">/dev</code> and Bluetooth devices natively without
+the need to use rfcomm to set up a <code class="filename">/dev</code> entry. To do
+this you pass either the device path or the Bluetooth address of the device
+to <a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a>.
+</p>
+<p>
+Once the program has finished with the GPS, the <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a> object should
+by unreferenced with <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"
+><code class="function">g_object_unref()</code></a>.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+. . .
+
+<a class="link" href="GypsyControl.html" title="GypsyControl">GypsyControl</a> *control;
+char *path_bt, *path_dev;
+GError *error = NULL;
+
+. . .
+
+control = gypsy_control_get_default ();
+/ * Use a Bluetooth device * /
+path_bt = gypsy_control_create (control, "aa:bb:cc:dd:ee", &amp;error);
+if (path_bt == NULL) {
+  g_warning ("There was an error creating aa:bb:cc:dd:ee - %s", error-&gt;message);
+  g_error_free (error);
+  error = NULL;
+}
+
+/ * Use a serial port device * /
+path_dev = gypsy_control_create (control, "/dev/gps", &amp;error);
+if (path_dev == NULL) {
+  g_warning ("There was an error creating /dev/gps - %s", error-&gt;message);
+  g_error_free (error);
+  error = NULL;
+}
+
+. . .
+
+/ * Use the paths here to create listener objects * /
+
+. . . 
+
+g_free (path_bt);
+g_free (path_dev);
+
+. . .
+
+/ * The program has finished with Gypsy now, unref the object. * /
+g_object_unref (G_OBJECT (control));
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GypsyControl.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsyControl">
+<a name="GypsyControl-struct"></a><h3>GypsyControl</h3>
+<pre class="programlisting">typedef struct _GypsyControl GypsyControl;</pre>
+<p>
+There are no public fields in <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_CONTROL_DBUS_SERVICE">
+<a name="GYPSY-CONTROL-DBUS-SERVICE--CAPS"></a><h3>GYPSY_CONTROL_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_CONTROL_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the service name of the control service</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_CONTROL_DBUS_PATH">
+<a name="GYPSY-CONTROL-DBUS-PATH--CAPS"></a><h3>GYPSY_CONTROL_DBUS_PATH</h3>
+<pre class="programlisting">#define GYPSY_CONTROL_DBUS_PATH "/org/freedesktop/Gypsy"
+</pre>
+<p>
+A define containing the object path of the Gypsy object</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_CONTROL_DBUS_INTERFACE">
+<a name="GYPSY-CONTROL-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_CONTROL_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_CONTROL_DBUS_INTERFACE "org.freedesktop.Gypsy.Server"
+</pre>
+<p>
+A define containing the name of the Control interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_control_get_default ()">
+<a name="gypsy-control-get-default"></a><h3>gypsy_control_get_default ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyControl.html" title="GypsyControl">GypsyControl</a> *      gypsy_control_get_default           (void);</pre>
+<p>
+Retrieves the default <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a> object.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A singleton <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a>.  Once the program has finished using
+the <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a>, it should be unreferenced with <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#g-object-unref"
+><code class="function">g_object_unref()</code></a>.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_control_create ()">
+<a name="gypsy-control-create"></a><h3>gypsy_control_create ()</h3>
+<pre class="programlisting">char *              gypsy_control_create                (<a class="link" href="GypsyControl.html" title="GypsyControl">GypsyControl</a> *control,
+                                                         const char *device_name,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Creates a object on the server that refers to the GPS device at <em class="parameter"><code>device_name</code></em>.
+When this object is finalized, the remote object on the server will be
+shutdown after which any calls to the object at the returned path
+are not guaranteed to work.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>control</code></em> :</span></p></td>
+<td> The <a class="link" href="GypsyControl.html" title="GypsyControl"><span class="type">GypsyControl</span></a> device
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device_name</code></em> :</span></p></td>
+<td> The path to the device file, or Bluetooth address
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to return errors in, or <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><code class="literal">NULL</code></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The path to the created object.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

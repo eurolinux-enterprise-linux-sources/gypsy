@@ -1,0 +1,89 @@
+<!-- ##### SECTION Title ##### -->
+GypsyPosition
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyPosition ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GypsyPosition::position-changed ##### -->
+<para>
+
+</para>
+
+@gypsyposition: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+@arg5: 
+
+<!-- ##### ARG GypsyPosition:object-path ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GYPSY_POSITION_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_POSITION_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM GypsyPositionFields ##### -->
+<para>
+
+</para>
+
+@GYPSY_POSITION_FIELDS_NONE: 
+@GYPSY_POSITION_FIELDS_LATITUDE: 
+@GYPSY_POSITION_FIELDS_LONGITUDE: 
+@GYPSY_POSITION_FIELDS_ALTITUDE: 
+
+<!-- ##### FUNCTION gypsy_position_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_position_get_position ##### -->
+<para>
+
+</para>
+
+@position: 
+@timestamp: 
+@latitude: 
+@longitude: 
+@altitude: 
+@error: 
+@Returns: 
+
+

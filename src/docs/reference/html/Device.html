@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>org.freedesktop.Gypsy.Device</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="prev" href="Course.html" title="org.freedesktop.Gypsy.Course">
+<link rel="next" href="Position.html" title="org.freedesktop.Gypsy.Position">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="Course.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="gypsy-client-interfaces.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="Position.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#Device.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#Device.description" class="shortcut">Description</a>
+                 | 
+                <a href="#Device.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                 | 
+                <a href="#Device.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#Device.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="org.freedesktop.Gypsy.Device">
+<a name="Device"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">org.freedesktop.Gypsy.Device</span></h2>
+<p>org.freedesktop.Gypsy.Device — Device interface</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Methods">
+<h2>Methods</h2>
+<pre class="synopsis"><a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device.Start"
+>Start</a>               ()
+<a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device.Stop"
+>Stop</a>                ()
+<a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device.GetFixStatus"
+>GetFixStatus</a>        (out 'i'fixtype)
+<a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device.GetConnectionStatus"
+>GetConnectionStatus</a> (out 'b'connected)
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="id562828"></a><h2>Signals</h2>
+<pre class="synopsis"><a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device::FixStatusChanged"
+>FixStatusChanged</a>        ('i'fixtype)
+<a
+href="/usr/share/gtk-doc/html/gypsy/Device.html#Device::ConnectionStatusChanged"
+>ConnectionStatusChanged</a> ('b'connected)
+</pre>
+</div>
+<div class="refsect1" title="Implemented Interfaces">
+<a name="id562854"></a><h2>Implemented Interfaces</h2>
+<p>org.freedesktop.Gypsy.Device implements
+    org.freedesktop.DBus.Introspectable,
+    org.freedesktop.DBus.Properties
+    </p>
+</div>
+<div class="refsect1" title="Properties">
+<a name="id562871"></a><h2>Properties</h2>
+<pre class="synopsis"></pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="id562885"></a><h2>Description</h2>
+<p></p>
+</div>
+<div class="refsect1" title="Details">
+<a name="id562900"></a><h2>Details</h2>
+<div class="refsect2" title="Start ()">
+<a name="id562910"></a><h3>
+<a name="Device.Start"></a>Start ()</h3>
+<pre class="programlisting">Start ()</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="Stop ()">
+<a name="id562943"></a><h3>
+<a name="Device.Stop"></a>Stop ()</h3>
+<pre class="programlisting">Stop ()</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="GetFixStatus ()">
+<a name="id562976"></a><h3>
+<a name="Device.GetFixStatus"></a>GetFixStatus ()</h3>
+<pre class="programlisting">GetFixStatus (out 'i' fixtype)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>fixtype</code></em>:</span></p></td>
+<td><p></p></td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="GetConnectionStatus ()">
+<a name="id565883"></a><h3>
+<a name="Device.GetConnectionStatus"></a>GetConnectionStatus ()</h3>
+<pre class="programlisting">GetConnectionStatus (out 'b' connected)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>connected</code></em>:</span></p></td>
+<td><p></p></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="id565934"></a><h2>Signal Details</h2>
+<div class="refsect2" title="The FixStatusChanged signal">
+<a name="id565945"></a><h3>
+<a name="Device::FixStatusChanged"></a>The FixStatusChanged signal</h3>
+<pre class="programlisting">FixStatusChanged ('i' fixtype)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>fixtype</code></em>:</span></p></td>
+<td></td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="The ConnectionStatusChanged signal">
+<a name="id565996"></a><h3>
+<a name="Device::ConnectionStatusChanged"></a>The ConnectionStatusChanged signal</h3>
+<pre class="programlisting">ConnectionStatusChanged ('b' connected)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>connected</code></em>:</span></p></td>
+<td></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="id566047"></a><h2>Property Details</h2>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

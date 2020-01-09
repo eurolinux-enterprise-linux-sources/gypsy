@@ -1,0 +1,60 @@
+<!-- ##### SECTION Title ##### -->
+GypsyTime
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyTime ##### -->
+<para>
+
+</para>
+
+@parent_object: 
+
+<!-- ##### MACRO GYPSY_TIME_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_TIME_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gypsy_time_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_time_get_time ##### -->
+<para>
+
+</para>
+
+@gps_time: 
+@timestamp: 
+@error: 
+@Returns: 
+
+

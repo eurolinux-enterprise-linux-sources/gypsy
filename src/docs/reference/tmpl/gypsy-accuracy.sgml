@@ -1,0 +1,87 @@
+<!-- ##### SECTION Title ##### -->
+GypsyAccuracy
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyAccuracy ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GypsyAccuracy::accuracy-changed ##### -->
+<para>
+
+</para>
+
+@gypsyaccuracy: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+
+<!-- ##### ARG GypsyAccuracy:object-path ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GYPSY_ACCURACY_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_ACCURACY_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM GypsyAccuracyFields ##### -->
+<para>
+
+</para>
+
+@GYPSY_ACCURACY_FIELDS_NONE: 
+@GYPSY_ACCURACY_FIELDS_POSITION: 
+@GYPSY_ACCURACY_FIELDS_HORIZONTAL: 
+@GYPSY_ACCURACY_FIELDS_VERTICAL: 
+
+<!-- ##### FUNCTION gypsy_accuracy_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_accuracy_get_accuracy ##### -->
+<para>
+
+</para>
+
+@accuracy: 
+@pdop: 
+@hdop: 
+@vdop: 
+@error: 
+@Returns: 
+
+

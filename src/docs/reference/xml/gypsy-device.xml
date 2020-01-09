@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="GypsyDevice">
+<refmeta>
+<refentrytitle role="top_of_page" id="GypsyDevice.top_of_page">GypsyDevice</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GYPSY Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GypsyDevice</refname>
+<refpurpose>Object for obtaining device information</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GypsyDevice.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GypsyDevice-struct">GypsyDevice</link>;
+#define             <link linkend="GYPSY-DEVICE-DBUS-SERVICE--CAPS">GYPSY_DEVICE_DBUS_SERVICE</link>
+#define             <link linkend="GYPSY-DEVICE-DBUS-INTERFACE--CAPS">GYPSY_DEVICE_DBUS_INTERFACE</link>
+enum                <link linkend="GypsyDeviceFixStatus">GypsyDeviceFixStatus</link>;
+<link linkend="GypsyDevice">GypsyDevice</link> *       <link linkend="gypsy-device-new">gypsy_device_new</link>                    (const <link linkend="char">char</link> *object_path);
+<link linkend="gboolean">gboolean</link>            <link linkend="gypsy-device-get-connection-status">gypsy_device_get_connection_status</link>  (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="GypsyDeviceFixStatus">GypsyDeviceFixStatus</link>  <link linkend="gypsy-device-get-fix-status">gypsy_device_get_fix_status</link>       (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="gboolean">gboolean</link>            <link linkend="gypsy-device-start">gypsy_device_start</link>                  (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="gboolean">gboolean</link>            <link linkend="gypsy-device-stop">gypsy_device_stop</link>                   (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GypsyDevice.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GypsyDevice
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GypsyDevice.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GypsyDevice--object-path">object-path</link>&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GypsyDevice.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GypsyDevice-connection-changed">connection-changed</link>&quot;                             : Run First / No Recursion
+  &quot;<link linkend="GypsyDevice-fix-status-changed">fix-status-changed</link>&quot;                             : Run First / No Recursion
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GypsyDevice.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GypsyDevice"><type>GypsyDevice</type></link> is used whenever the client program wishes to know about
+changes in the device's status. It has signals for connection status and
+fix status. It can also be used to tell gypsy-daemon to start or stop parsing
+sentences from the GPS device.
+</para>
+<para>
+A <link linkend="GypsyDevice"><type>GypsyDevice</type></link> object is created using <link linkend="gypsy-device-new"><function>gypsy_device_new()</function></link> using the D-Bus path of
+the GPS device. This path is returned from the <link linkend="gypsy-control-create"><function>gypsy_control_create()</function></link> 
+function. The client can start the GPS data stream with <link linkend="gypsy-device-start"><function>gypsy_device_start()</function></link>,
+stop it with <link linkend="gypsy-device-stop"><function>gypsy_device_stop()</function></link>, or find out about the status with
+<link linkend="gypsy-device-get-fix-status"><function>gypsy_device_get_fix_status()</function></link> and <link linkend="gypsy-device-get-connection-status"><function>gypsy_device_get_connection_status()</function></link>.
+</para>
+<para>
+As the fix status and connection status change, <link linkend="GypsyDevice"><type>GypsyDevice</type></link> will emit the
+<link linkend="GypsyDevice-fix-status-changed"><type>"fix-status-changed"</type></link> and <link linkend="GypsyDevice-connection-changed"><type>"connection-changed"</type></link> signals
+respectively.
+</para>
+<para>
+<informalexample>
+<programlisting>
+GypsyDevice *device;
+GError *error = NULL;
+
+. . .
+
+/<!-- -->* path comes from the <link linkend="gypsy-control-create">gypsy_control_create</link>() function *<!-- -->/
+device = <link linkend="gypsy-device-new">gypsy_device_new</link> (path);
+g_signal_connect (device, "connection-changed", G_CALLBACK (connection_changed), NULL);
+<link linkend="gypsy-device-start">gypsy_device_start</link> (device, &amp;error);
+if (error != NULL) {
+&nbsp;&nbsp;g_warning ("Error starting GPS: %s", error->message);
+&nbsp;&nbsp;g_error_free (error);
+}
+
+. . .
+
+static void connection_changed (GypsyDevice *device, gboolean connected, gpointer data)
+{
+&nbsp;&nbsp;g_print ("Connection status: %s\n", connected ? "Connected" : "Disconnected");
+}
+</programlisting>
+</informalexample></para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GypsyDevice.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GypsyDevice-struct" role="struct">
+<title>GypsyDevice</title>
+<indexterm zone="GypsyDevice-struct"><primary sortas="GypsyDevice">GypsyDevice</primary></indexterm><programlisting>typedef struct _GypsyDevice GypsyDevice;</programlisting>
+<para>
+There are no public fields in <link linkend="GypsyDevice"><type>GypsyDevice</type></link>.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-DEVICE-DBUS-SERVICE--CAPS" role="macro">
+<title>GYPSY_DEVICE_DBUS_SERVICE</title>
+<indexterm zone="GYPSY-DEVICE-DBUS-SERVICE--CAPS"><primary sortas="GYPSY_DEVICE_DBUS_SERVICE">GYPSY_DEVICE_DBUS_SERVICE</primary></indexterm><programlisting>#define GYPSY_DEVICE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</programlisting>
+<para>
+A define containing the name of the Device service</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-DEVICE-DBUS-INTERFACE--CAPS" role="macro">
+<title>GYPSY_DEVICE_DBUS_INTERFACE</title>
+<indexterm zone="GYPSY-DEVICE-DBUS-INTERFACE--CAPS"><primary sortas="GYPSY_DEVICE_DBUS_INTERFACE">GYPSY_DEVICE_DBUS_INTERFACE</primary></indexterm><programlisting>#define GYPSY_DEVICE_DBUS_INTERFACE "org.freedesktop.Gypsy.Device"
+</programlisting>
+<para>
+A define containing the name of the Device interface</para>
+<para>
+</para></refsect2>
+<refsect2 id="GypsyDeviceFixStatus" role="enum">
+<title>enum GypsyDeviceFixStatus</title>
+<indexterm zone="GypsyDeviceFixStatus"><primary sortas="GypsyDeviceFixStatus">GypsyDeviceFixStatus</primary></indexterm><programlisting>typedef enum {
+	GYPSY_DEVICE_FIX_STATUS_INVALID = 0,
+	GYPSY_DEVICE_FIX_STATUS_NONE,
+	GYPSY_DEVICE_FIX_STATUS_2D,
+	GYPSY_DEVICE_FIX_STATUS_3D
+} GypsyDeviceFixStatus;
+</programlisting>
+<para>
+An enumeration representing the various fix states that a GPS device can be in.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GYPSY-DEVICE-FIX-STATUS-INVALID--CAPS" role="constant">
+<term><literal>GYPSY_DEVICE_FIX_STATUS_INVALID</literal></term>
+<listitem><simpara> The fix is invalid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-DEVICE-FIX-STATUS-NONE--CAPS" role="constant">
+<term><literal>GYPSY_DEVICE_FIX_STATUS_NONE</literal></term>
+<listitem><simpara> A fix has not yet been obtained
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-DEVICE-FIX-STATUS-2D--CAPS" role="constant">
+<term><literal>GYPSY_DEVICE_FIX_STATUS_2D</literal></term>
+<listitem><simpara> A fix with latitude and longitude has been obtained
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-DEVICE-FIX-STATUS-3D--CAPS" role="constant">
+<term><literal>GYPSY_DEVICE_FIX_STATUS_3D</literal></term>
+<listitem><simpara> A fix with latitude, longitude and altitude has been obtained
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-device-new" role="function">
+<title>gypsy_device_new ()</title>
+<indexterm zone="gypsy-device-new"><primary sortas="gypsy_device_new">gypsy_device_new</primary></indexterm><programlisting><link linkend="GypsyDevice">GypsyDevice</link> *       gypsy_device_new                    (const <link linkend="char">char</link> *object_path);</programlisting>
+<para>
+Creates a new <link linkend="GypsyDevice"><type>GypsyDevice</type></link> that points to <parameter>object_path</parameter></para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>object_path</parameter>&#160;:</term>
+<listitem><simpara> Object path to the device
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A pointer to a <link linkend="GypsyDevice"><type>GypsyDevice</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-device-get-connection-status" role="function">
+<title>gypsy_device_get_connection_status ()</title>
+<indexterm zone="gypsy-device-get-connection-status"><primary sortas="gypsy_device_get_connection_status">gypsy_device_get_connection_status</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gypsy_device_get_connection_status  (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Obtains the connection status of <parameter>device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyDevice"><type>GypsyDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> to return an error in.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the device is connected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-device-get-fix-status" role="function">
+<title>gypsy_device_get_fix_status ()</title>
+<indexterm zone="gypsy-device-get-fix-status"><primary sortas="gypsy_device_get_fix_status">gypsy_device_get_fix_status</primary></indexterm><programlisting><link linkend="GypsyDeviceFixStatus">GypsyDeviceFixStatus</link>  gypsy_device_get_fix_status       (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Obtains the current fix status of <parameter>device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyDevice"><type>GypsyDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> to return a error in.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GypsyDeviceFixStatus"><type>GypsyDeviceFixStatus</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-device-start" role="function">
+<title>gypsy_device_start ()</title>
+<indexterm zone="gypsy-device-start"><primary sortas="gypsy_device_start">gypsy_device_start</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gypsy_device_start                  (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Starts the connection to the physical device pointed to by <parameter>device</parameter>, and
+listens for incoming messages.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyDevice"><type>GypsyDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> to return the error in
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> on success, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-device-stop" role="function">
+<title>gypsy_device_stop ()</title>
+<indexterm zone="gypsy-device-stop"><primary sortas="gypsy_device_stop">gypsy_device_stop</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            gypsy_device_stop                   (<link linkend="GypsyDevice">GypsyDevice</link> *device,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Stops the physical device pointed to by <parameter>device</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>device</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyDevice"><type>GypsyDevice</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A pointer to a <link linkend="GError"><type>GError</type></link> to return the error in
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> on success, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GypsyDevice.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GypsyDevice--object-path" role="property"><title>The <literal>&quot;object-path&quot;</literal> property</title>
+<indexterm zone="GypsyDevice--object-path"><primary sortas="GypsyDevice:object-path">GypsyDevice:object-path</primary></indexterm><programlisting>  &quot;object-path&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only</programlisting>
+<para>
+The path of the Gypsy GPS object</para>
+<para>
+</para><para>Default value: ""</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GypsyDevice.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GypsyDevice-connection-changed" role="signal"><title>The <literal>&quot;connection-changed&quot;</literal> signal</title>
+<indexterm zone="GypsyDevice-connection-changed"><primary sortas="GypsyDevice::connection-changed">GypsyDevice::connection-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsyDevice">GypsyDevice</link> *connected,
+                                                        <link linkend="gboolean">gboolean</link>     arg1,
+                                                        <link linkend="gpointer">gpointer</link>     user_data)      : Run First / No Recursion</programlisting>
+<para>
+The ::connection-changed signal is emitted whenever the device
+connection changes.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>connected</parameter>&#160;:</term>
+<listitem><simpara> Whether or not the device is connected
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2><refsect2 id="GypsyDevice-fix-status-changed" role="signal"><title>The <literal>&quot;fix-status-changed&quot;</literal> signal</title>
+<indexterm zone="GypsyDevice-fix-status-changed"><primary sortas="GypsyDevice::fix-status-changed">GypsyDevice::fix-status-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsyDevice">GypsyDevice</link> *fix_status,
+                                                        <link linkend="gint">gint</link>         arg1,
+                                                        <link linkend="gpointer">gpointer</link>     user_data)       : Run First / No Recursion</programlisting>
+<para>
+The ::fix-status-changed signal is emitted whenever the GPS device
+reports that its fix status has changed. <parameter>fix_status</parameter> is a
+<link linkend="GypsyDeviceFixStatus"><type>GypsyDeviceFixStatus</type></link></para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>fix_status</parameter>&#160;:</term>
+<listitem><simpara> The new fix status
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

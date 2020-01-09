@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsyCourse</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch03.html" title="GPS Data Objects">
+<link rel="prev" href="GypsyAccuracy.html" title="GypsyAccuracy">
+<link rel="next" href="GypsyPosition.html" title="GypsyPosition">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GypsyAccuracy.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="GypsyPosition.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GypsyCourse.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GypsyCourse.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GypsyCourse.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GypsyCourse.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GypsyCourse.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsyCourse">
+<a name="GypsyCourse"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GypsyCourse.top_of_page"></a>GypsyCourse</span></h2>
+<p>GypsyCourse — Object for obtaining course information</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GypsyCourse.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GypsyCourse.html#GypsyCourse-struct" title="GypsyCourse">GypsyCourse</a>;
+#define             <a class="link" href="GypsyCourse.html#GYPSY-COURSE-DBUS-INTERFACE--CAPS" title="GYPSY_COURSE_DBUS_INTERFACE">GYPSY_COURSE_DBUS_INTERFACE</a>
+#define             <a class="link" href="GypsyCourse.html#GYPSY-COURSE-DBUS-SERVICE--CAPS" title="GYPSY_COURSE_DBUS_SERVICE">GYPSY_COURSE_DBUS_SERVICE</a>
+enum                <a class="link" href="GypsyCourse.html#GypsyCourseFields" title="enum GypsyCourseFields">GypsyCourseFields</a>;
+<a class="link" href="GypsyCourse.html" title="GypsyCourse">GypsyCourse</a> *       <a class="link" href="GypsyCourse.html#gypsy-course-new" title="gypsy_course_new ()">gypsy_course_new</a>                    (const char *object_path);
+<a class="link" href="GypsyCourse.html#GypsyCourseFields" title="enum GypsyCourseFields">GypsyCourseFields</a>   <a class="link" href="GypsyCourse.html#gypsy-course-get-course" title="gypsy_course_get_course ()">gypsy_course_get_course</a>             (<a class="link" href="GypsyCourse.html" title="GypsyCourse">GypsyCourse</a> *course,
+                                                         int *timestamp,
+                                                         double *speed,
+                                                         double *direction,
+                                                         double *climb,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GypsyCourse.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GypsyCourse
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GypsyCourse.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyCourse.html#GypsyCourse--object-path" title='The "object-path" property'>object-path</a>"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GypsyCourse.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyCourse.html#GypsyCourse-course-changed" title='The "course-changed" signal'>course-changed</a>"                                 : Run First / No Recursion
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GypsyCourse.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> is used whenever the client program wishes to know about
+GPS course changes. It can report the current course, and has a signal
+to notify listeners of changes. The course consists of the speed, direction
+and rate of ascent or descent (called the climb).
+</p>
+<p>
+A <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> object is created using <a class="link" href="GypsyCourse.html#gypsy-course-new" title="gypsy_course_new ()"><code class="function">gypsy_course_new()</code></a> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a> function. The client can then find out about the
+course with <a class="link" href="GypsyCourse.html#gypsy-course-get-course" title="gypsy_course_get_course ()"><code class="function">gypsy_course_get_course()</code></a>.
+</p>
+<p>
+As the course information changes <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> will emit the 
+course-changed signal. This signal contains the course information if 
+gypsy-daemon knows it. It has a fields paramater which is a bitmask of
+<a class="link" href="GypsyCourse.html#GypsyCourseFields" title="enum GypsyCourseFields"><span class="type">GypsyCourseFields</span></a> which indicates which of the speed, direction or
+climb contains valid information. The timestamp will always be valid
+if it is greater than 0.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+GypsyCourse *course;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+course = gypsy_course_new (path);
+g_signal_connect (course, "course-changed", G_CALLBACK (course_changed), NULL);
+
+. . .
+
+static void 
+course_changed (GypsyCourse *course, 
+GypsyCourseFields fields,
+int timestamp,
+double speed,
+double direction,
+double climb,
+gpointer userdata)
+{
+  g_print ("speed: %fm/s\n", (fields &amp; GYPSY_COURSE_FIELDS_SPEED) ? speed : -1.0);
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GypsyCourse.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsyCourse">
+<a name="GypsyCourse-struct"></a><h3>GypsyCourse</h3>
+<pre class="programlisting">typedef struct _GypsyCourse GypsyCourse;</pre>
+<p>
+There are no public fields in <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_COURSE_DBUS_INTERFACE">
+<a name="GYPSY-COURSE-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_COURSE_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_COURSE_DBUS_INTERFACE "org.freedesktop.Gypsy.Course"
+</pre>
+<p>
+A define containing the name of the Course interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_COURSE_DBUS_SERVICE">
+<a name="GYPSY-COURSE-DBUS-SERVICE--CAPS"></a><h3>GYPSY_COURSE_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_COURSE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the address of the Course service</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="enum GypsyCourseFields">
+<a name="GypsyCourseFields"></a><h3>enum GypsyCourseFields</h3>
+<pre class="programlisting">typedef enum {
+	GYPSY_COURSE_FIELDS_NONE = 0,
+	GYPSY_COURSE_FIELDS_SPEED = 1 &lt;&lt; 0,
+	GYPSY_COURSE_FIELDS_DIRECTION = 1 &lt;&lt; 1,
+	GYPSY_COURSE_FIELDS_CLIMB = 1 &lt;&lt; 2
+} GypsyCourseFields;
+</pre>
+<p>
+A bitfield telling which fields in the course_changed callback are valid</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="GYPSY-COURSE-FIELDS-NONE--CAPS"></a><span class="term"><code class="literal">GYPSY_COURSE_FIELDS_NONE</code></span></p></td>
+<td> None of the fields are valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-COURSE-FIELDS-SPEED--CAPS"></a><span class="term"><code class="literal">GYPSY_COURSE_FIELDS_SPEED</code></span></p></td>
+<td> The speed field is valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-COURSE-FIELDS-DIRECTION--CAPS"></a><span class="term"><code class="literal">GYPSY_COURSE_FIELDS_DIRECTION</code></span></p></td>
+<td> The direction field is valid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-COURSE-FIELDS-CLIMB--CAPS"></a><span class="term"><code class="literal">GYPSY_COURSE_FIELDS_CLIMB</code></span></p></td>
+<td> The climb field is valid
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_course_new ()">
+<a name="gypsy-course-new"></a><h3>gypsy_course_new ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyCourse.html" title="GypsyCourse">GypsyCourse</a> *       gypsy_course_new                    (const char *object_path);</pre>
+<p>
+Creates a new <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> object that listens for course changes
+from the GPS device found at <em class="parameter"><code>object_path</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object_path</code></em> :</span></p></td>
+<td> Object path to the GPS device.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> object
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_course_get_course ()">
+<a name="gypsy-course-get-course"></a><h3>gypsy_course_get_course ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyCourse.html#GypsyCourseFields" title="enum GypsyCourseFields">GypsyCourseFields</a>   gypsy_course_get_course             (<a class="link" href="GypsyCourse.html" title="GypsyCourse">GypsyCourse</a> *course,
+                                                         int *timestamp,
+                                                         double *speed,
+                                                         double *direction,
+                                                         double *climb,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Obtains the course details from <em class="parameter"><code>course</code></em>. <em class="parameter"><code>timestamp</code></em>, <em class="parameter"><code>speed</code></em>, <em class="parameter"><code>direction</code></em> and
+<em class="parameter"><code>climb</code></em> can be <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL--CAPS"
+><span class="type">NULL</span></a> if that detail is not required.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>course</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyCourse.html" title="GypsyCourse"><span class="type">GypsyCourse</span></a> object
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timestamp</code></em> :</span></p></td>
+<td> Pointer for the timestamp to be returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>speed</code></em> :</span></p></td>
+<td> Pointer for the speed to be returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>direction</code></em> :</span></p></td>
+<td> Pointer for the direction to be returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>climb</code></em> :</span></p></td>
+<td> Pointer for the climb to be returned
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> for error return
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A bitmask of the fields that are set.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GypsyCourse.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "object-path" property'>
+<a name="GypsyCourse--object-path"></a><h3>The <code class="literal">"object-path"</code> property</h3>
+<pre class="programlisting">  "object-path"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only</pre>
+<p>
+The path of the Gypsy GPS object</p>
+<p>
+</p>
+<p>Default value: ""</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GypsyCourse.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "course-changed" signal'>
+<a name="GypsyCourse-course-changed"></a><h3>The <code class="literal">"course-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GypsyCourse.html" title="GypsyCourse">GypsyCourse</a> *fields,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a>         timestamp,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a>         speed,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>      direction,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>      climb,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gdouble"
+>gdouble</a>      arg5,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>     user_data)      : Run First / No Recursion</pre>
+<p>
+The ::course-changed signal is emitted when the GPS device
+indicates that one or more of the course fields has changed.
+The fields which have changed will be indicated in the <em class="parameter"><code>fields</code></em>
+bitmask.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fields</code></em> :</span></p></td>
+<td> A bitmask of <a class="link" href="GypsyCourse.html#GypsyCourseFields" title="enum GypsyCourseFields"><span class="type">GypsyCourseFields</span></a> indicating which of the following fields are valid
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timestamp</code></em> :</span></p></td>
+<td> The time this change occurred
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>speed</code></em> :</span></p></td>
+<td> The new speed
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>direction</code></em> :</span></p></td>
+<td> The new direction
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>climb</code></em> :</span></p></td>
+<td> The new rate of climb
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

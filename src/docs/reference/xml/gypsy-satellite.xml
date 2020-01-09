@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="GypsySatellite">
+<refmeta>
+<refentrytitle role="top_of_page" id="GypsySatellite.top_of_page">GypsySatellite</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GYPSY Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GypsySatellite</refname>
+<refpurpose>Object for obtaining satellite information</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GypsySatellite.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GypsySatellite-struct">GypsySatellite</link>;
+#define             <link linkend="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS">GYPSY_SATELLITE_DBUS_INTERFACE</link>
+#define             <link linkend="GYPSY-SATELLITE-DBUS-SERVICE--CAPS">GYPSY_SATELLITE_DBUS_SERVICE</link>
+                    <link linkend="GypsySatelliteDetails">GypsySatelliteDetails</link>;
+<link linkend="GypsySatellite">GypsySatellite</link> *    <link linkend="gypsy-satellite-new">gypsy_satellite_new</link>                 (const <link linkend="char">char</link> *object_path);
+<link linkend="GPtrArray">GPtrArray</link> *         <link linkend="gypsy-satellite-get-satellites">gypsy_satellite_get_satellites</link>      (<link linkend="GypsySatellite">GypsySatellite</link> *satellite,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="void">void</link>                <link linkend="gypsy-satellite-free-satellite-array">gypsy_satellite_free_satellite_array</link>
+                                                        (<link linkend="GPtrArray">GPtrArray</link> *satellites);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GypsySatellite.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GypsySatellite
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GypsySatellite.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GypsySatellite--object-path">object-path</link>&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GypsySatellite.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GypsySatellite-satellites-changed">satellites-changed</link>&quot;                             : Run Last
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GypsySatellite.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GypsySatellite"><type>GypsySatellite</type></link> is used whenever the client program wishes to know about
+changes in the satellite details. The satellite details contain the satellite
+ID number (the PRN), the elevation, the azimuth, the signal-to-noise ratio
+(SNR) and whether or not the satellite was used to calculate the fix.
+</para>
+<para>
+A <link linkend="GypsySatellite"><type>GypsySatellite</type></link> object is created using <link linkend="gypsy-satellite-new"><function>gypsy_satellite_new()</function></link> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<link linkend="gypsy-control-create"><function>gypsy_control_create()</function></link> function. The client can then find out about the
+visible satellites with <link linkend="gypsy-satellite-get-satellites"><function>gypsy_satellite_get_satellites()</function></link> which returns a
+GPtrArray containing the <link linkend="GypsySatelliteDetails"><type>GypsySatelliteDetails</type></link> for each visible satellite.
+Once the client is finished with this GPtrArray 
+<link linkend="gypsy-satellite-free-satellite-array"><function>gypsy_satellite_free_satellite_array()</function></link> should be used to free the data.
+</para>
+<para>
+As the satellite information changes <link linkend="GypsySatellite"><type>GypsySatellite</type></link> will emit the 
+satellite-changed signal. This signal contains the satellite details in
+a GPtrArray. In this case the satellite array does not need to be freed
+with <link linkend="gypsy-satellite-free-satellite-array"><function>gypsy_satellite_free_satellite_array()</function></link>.
+</para>
+<para>
+Although gypsy-daemon only emits signals whenever the associated data has 
+changed, satellite data is constantly changing, so so the satellite-changed
+signal will be emitted at a rate of once every second.
+</para>
+<para>
+<informalexample>
+<programlisting>
+GypsySatellite *satellite;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+satellite = gypsy_satellite_new (path);
+g_signal_connect (satellite, "satellite-changed", G_CALLBACK (satellite_changed), NULL);
+
+. . .
+
+static void satellite_changed (GypsySatellite *satellite, 
+GPtrArray *satellites,
+gpointer userdata)
+{
+&nbsp;&nbsp;int i;
+
+&nbsp;&nbsp;for (i = 0; i &lt; satellites->len; i++) {
+&nbsp;&nbsp;&nbsp;&nbsp;GypsySatelliteDetails *details = satellites->pdata[i];
+&nbsp;&nbsp;&nbsp;&nbsp;g_print ("Satellite %d: %s", details->satellite_id, details->in_use ? "In use" : "Not in use");
+&nbsp;&nbsp;}
+}
+</programlisting>
+</informalexample></para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GypsySatellite.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GypsySatellite-struct" role="struct">
+<title>GypsySatellite</title>
+<indexterm zone="GypsySatellite-struct"><primary sortas="GypsySatellite">GypsySatellite</primary></indexterm><programlisting>typedef struct _GypsySatellite GypsySatellite;</programlisting>
+<para>
+There are no public fields in <link linkend="GypsySatellite"><type>GypsySatellite</type></link>.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS" role="macro">
+<title>GYPSY_SATELLITE_DBUS_INTERFACE</title>
+<indexterm zone="GYPSY-SATELLITE-DBUS-INTERFACE--CAPS"><primary sortas="GYPSY_SATELLITE_DBUS_INTERFACE">GYPSY_SATELLITE_DBUS_INTERFACE</primary></indexterm><programlisting>#define GYPSY_SATELLITE_DBUS_INTERFACE "org.freedesktop.Gypsy.Satellite"
+</programlisting>
+<para>
+A define containing the name of the Satellite interface</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-SATELLITE-DBUS-SERVICE--CAPS" role="macro">
+<title>GYPSY_SATELLITE_DBUS_SERVICE</title>
+<indexterm zone="GYPSY-SATELLITE-DBUS-SERVICE--CAPS"><primary sortas="GYPSY_SATELLITE_DBUS_SERVICE">GYPSY_SATELLITE_DBUS_SERVICE</primary></indexterm><programlisting>#define GYPSY_SATELLITE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</programlisting>
+<para>
+A define containing the address of the Satellite service.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GypsySatelliteDetails" role="struct">
+<title>GypsySatelliteDetails</title>
+<indexterm zone="GypsySatelliteDetails"><primary sortas="GypsySatelliteDetails">GypsySatelliteDetails</primary></indexterm><programlisting>typedef struct {
+	int satellite_id;
+	gboolean in_use;
+	guint elevation;
+	guint azimuth;
+	guint snr;
+} GypsySatelliteDetails;
+</programlisting>
+<para>
+A structure defining a satellite</para>
+<para>
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="int">int</link>&#160;<structfield>satellite_id</structfield>;</term>
+<listitem><simpara> The satellite PRN id
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="gboolean">gboolean</link>&#160;<structfield>in_use</structfield>;</term>
+<listitem><simpara> Whether this satellite was used in calculating the fix
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>elevation</structfield>;</term>
+<listitem><simpara> The satellite elevation
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>azimuth</structfield>;</term>
+<listitem><simpara> The satellite azimuth
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>snr</structfield>;</term>
+<listitem><simpara> The signal to noise ratio
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-satellite-new" role="function">
+<title>gypsy_satellite_new ()</title>
+<indexterm zone="gypsy-satellite-new"><primary sortas="gypsy_satellite_new">gypsy_satellite_new</primary></indexterm><programlisting><link linkend="GypsySatellite">GypsySatellite</link> *    gypsy_satellite_new                 (const <link linkend="char">char</link> *object_path);</programlisting>
+<para>
+Creates a new <link linkend="GypsySatellite"><type>GypsySatellite</type></link> object that listens for satellite changes
+from the GPS found at <parameter>object_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>object_path</parameter>&#160;:</term>
+<listitem><simpara> Object path to the GPS device
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GypsySatellite"><type>GypsySatellite</type></link> object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-satellite-get-satellites" role="function">
+<title>gypsy_satellite_get_satellites ()</title>
+<indexterm zone="gypsy-satellite-get-satellites"><primary sortas="gypsy_satellite_get_satellites">gypsy_satellite_get_satellites</primary></indexterm><programlisting><link linkend="GPtrArray">GPtrArray</link> *         gypsy_satellite_get_satellites      (<link linkend="GypsySatellite">GypsySatellite</link> *satellite,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Retrieves the <link linkend="GypsySatelliteDetails"><type>GypsySatelliteDetails</type></link> about the satellites that the 
+GPS is able to see.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>satellite</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsySatellite"><type>GypsySatellite</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GError"><type>GError</type></link> for error return
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GPtrArray"><type>GPtrArray</type></link> of <link linkend="GypsySatelliteDetails"><type>GypsySatelliteDetails</type></link> or <link linkend="NULL--CAPS"><type>NULL</type></link> on error. 
+Should be freed using <link linkend="gypsy-satellite-free-satellite-array"><function>gypsy_satellite_free_satellite_array()</function></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-satellite-free-satellite-array" role="function">
+<title>gypsy_satellite_free_satellite_array ()</title>
+<indexterm zone="gypsy-satellite-free-satellite-array"><primary sortas="gypsy_satellite_free_satellite_array">gypsy_satellite_free_satellite_array</primary></indexterm><programlisting><link linkend="void">void</link>                gypsy_satellite_free_satellite_array
+                                                        (<link linkend="GPtrArray">GPtrArray</link> *satellites);</programlisting>
+<para>
+Frees all resources used in the array.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>satellites</parameter>&#160;:</term>
+<listitem><simpara> <link linkend="GPtrArray"><type>GPtrArray</type></link> containing <link linkend="GypsySatelliteDetails"><type>GypsySatelliteDetails</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GypsySatellite.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GypsySatellite--object-path" role="property"><title>The <literal>&quot;object-path&quot;</literal> property</title>
+<indexterm zone="GypsySatellite--object-path"><primary sortas="GypsySatellite:object-path">GypsySatellite:object-path</primary></indexterm><programlisting>  &quot;object-path&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only</programlisting>
+<para>The DBus path to the object.</para><para>Default value: ""</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GypsySatellite.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GypsySatellite-satellites-changed" role="signal"><title>The <literal>&quot;satellites-changed&quot;</literal> signal</title>
+<indexterm zone="GypsySatellite-satellites-changed"><primary sortas="GypsySatellite::satellites-changed">GypsySatellite::satellites-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsySatellite">GypsySatellite</link> *satellites,
+                                                        <link linkend="gpointer">gpointer</link>        arg1,
+                                                        <link linkend="gpointer">gpointer</link>        user_data)       : Run Last</programlisting>
+<para>
+The ::satellites-changed signal is emitted every time the GPS
+reports a change in the satellite data.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>satellites</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GPtrArray"><type>GPtrArray</type></link> containing <link linkend="GypsySatelliteDetails"><type>GypsySatelliteDetails</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

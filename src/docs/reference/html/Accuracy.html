@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>org.freedesktop.Gypsy.Accuracy</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="prev" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="next" href="Course.html" title="org.freedesktop.Gypsy.Course">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gypsy-client-interfaces.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="gypsy-client-interfaces.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="Course.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#Accuracy.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#Accuracy.description" class="shortcut">Description</a>
+                 | 
+                <a href="#Accuracy.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                 | 
+                <a href="#Accuracy.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#Accuracy.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="org.freedesktop.Gypsy.Accuracy">
+<a name="Accuracy"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">org.freedesktop.Gypsy.Accuracy</span></h2>
+<p>org.freedesktop.Gypsy.Accuracy — Accuracy interface</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Methods">
+<h2>Methods</h2>
+<pre class="synopsis"><a
+href="/usr/share/gtk-doc/html/gypsy/Accuracy.html#Accuracy.GetAccuracy"
+>GetAccuracy</a> (out 'i'fields,
+             out 'd'pdop,
+             out 'd'hdop,
+             out 'd'vdop)
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="id546757"></a><h2>Signals</h2>
+<pre class="synopsis"><a
+href="/usr/share/gtk-doc/html/gypsy/Accuracy.html#Accuracy::AccuracyChanged"
+>AccuracyChanged</a> ('i'fields,
+                 'd'pdop,
+                 'd'hdop,
+                 'd'vdop)
+</pre>
+</div>
+<div class="refsect1" title="Implemented Interfaces">
+<a name="id546778"></a><h2>Implemented Interfaces</h2>
+<p>org.freedesktop.Gypsy.Accuracy implements
+    org.freedesktop.DBus.Introspectable,
+    org.freedesktop.DBus.Properties
+    </p>
+</div>
+<div class="refsect1" title="Properties">
+<a name="id546795"></a><h2>Properties</h2>
+<pre class="synopsis"></pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="id546809"></a><h2>Description</h2>
+<p>
+      </p>
+<p>
+        Accuracy objects are used to determine the accuracy of the current
+        position.  The accuracy is called "dilution of precision" with 1.0 being
+        the an ideal fix, and higher values meaning less accuracy.
+      </p>
+<p>
+    </p>
+</div>
+<div class="refsect1" title="Details">
+<a name="id552710"></a><h2>Details</h2>
+<div class="refsect2" title="GetAccuracy ()">
+<a name="id552721"></a><h3>
+<a name="Accuracy.GetAccuracy"></a>GetAccuracy ()</h3>
+<pre class="programlisting">GetAccuracy (out 'i' fields,
+             out 'd' pdop,
+             out 'd' hdop,
+             out 'd' vdop)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fields</code></em>:</span></p></td>
+<td><p>Bitfield specifying what fields are set.  1: Position, 2:
+            Horizontal, 4: Vertical.</p></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pdop</code></em>:</span></p></td>
+<td><p>The positional (3D) dilution of precision.</p></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hdop</code></em>:</span></p></td>
+<td><p>The horizontal (2D) dilution of precision.</p></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>vdop</code></em>:</span></p></td>
+<td><p>The vertical (altitude) dilution of precision.</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="id500244"></a><h2>Signal Details</h2>
+<div class="refsect2" title="The AccuracyChanged signal">
+<a name="id500255"></a><h3>
+<a name="Accuracy::AccuracyChanged"></a>The AccuracyChanged signal</h3>
+<pre class="programlisting">AccuracyChanged ('i' fields,
+                 'd' pdop,
+                 'd' hdop,
+                 'd' vdop)</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fields</code></em>:</span></p></td>
+<td>Bitfield specifying what fields are set.  1: Position, 2:
+          Horizontal, 4: Vertical.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pdop</code></em>:</span></p></td>
+<td>The positional (3D) dilution of precision.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hdop</code></em>:</span></p></td>
+<td>The horizontal (2D) dilution of precision.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>vdop</code></em>:</span></p></td>
+<td>The vertical (altitude) dilution of precision.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="id552207"></a><h2>Property Details</h2>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

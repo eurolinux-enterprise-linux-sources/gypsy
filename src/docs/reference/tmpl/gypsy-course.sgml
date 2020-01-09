@@ -1,0 +1,89 @@
+<!-- ##### SECTION Title ##### -->
+GypsyCourse
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT GypsyCourse ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GypsyCourse::course-changed ##### -->
+<para>
+
+</para>
+
+@gypsycourse: the object which received the signal.
+@arg1: 
+@arg2: 
+@arg3: 
+@arg4: 
+@arg5: 
+
+<!-- ##### ARG GypsyCourse:object-path ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GYPSY_COURSE_DBUS_INTERFACE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### MACRO GYPSY_COURSE_DBUS_SERVICE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### ENUM GypsyCourseFields ##### -->
+<para>
+
+</para>
+
+@GYPSY_COURSE_FIELDS_NONE: 
+@GYPSY_COURSE_FIELDS_SPEED: 
+@GYPSY_COURSE_FIELDS_DIRECTION: 
+@GYPSY_COURSE_FIELDS_CLIMB: 
+
+<!-- ##### FUNCTION gypsy_course_new ##### -->
+<para>
+
+</para>
+
+@object_path: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gypsy_course_get_course ##### -->
+<para>
+
+</para>
+
+@course: 
+@timestamp: 
+@speed: 
+@direction: 
+@climb: 
+@error: 
+@Returns: 
+
+

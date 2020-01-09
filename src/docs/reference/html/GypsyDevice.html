@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GypsyDevice</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch03.html" title="GPS Data Objects">
+<link rel="prev" href="ch03.html" title="GPS Data Objects">
+<link rel="next" href="GypsyAccuracy.html" title="GypsyAccuracy">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch03.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="GypsyAccuracy.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GypsyDevice.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#GypsyDevice.description" class="shortcut">Description</a>
+                 | 
+                <a href="#GypsyDevice.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                 | 
+                <a href="#GypsyDevice.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#GypsyDevice.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="GypsyDevice">
+<a name="GypsyDevice"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GypsyDevice.top_of_page"></a>GypsyDevice</span></h2>
+<p>GypsyDevice — Object for obtaining device information</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Synopsis">
+<a name="GypsyDevice.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GypsyDevice.html#GypsyDevice-struct" title="GypsyDevice">GypsyDevice</a>;
+#define             <a class="link" href="GypsyDevice.html#GYPSY-DEVICE-DBUS-SERVICE--CAPS" title="GYPSY_DEVICE_DBUS_SERVICE">GYPSY_DEVICE_DBUS_SERVICE</a>
+#define             <a class="link" href="GypsyDevice.html#GYPSY-DEVICE-DBUS-INTERFACE--CAPS" title="GYPSY_DEVICE_DBUS_INTERFACE">GYPSY_DEVICE_DBUS_INTERFACE</a>
+enum                <a class="link" href="GypsyDevice.html#GypsyDeviceFixStatus" title="enum GypsyDeviceFixStatus">GypsyDeviceFixStatus</a>;
+<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *       <a class="link" href="GypsyDevice.html#gypsy-device-new" title="gypsy_device_new ()">gypsy_device_new</a>                    (const char *object_path);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GypsyDevice.html#gypsy-device-get-connection-status" title="gypsy_device_get_connection_status ()">gypsy_device_get_connection_status</a>  (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a class="link" href="GypsyDevice.html#GypsyDeviceFixStatus" title="enum GypsyDeviceFixStatus">GypsyDeviceFixStatus</a>  <a class="link" href="GypsyDevice.html#gypsy-device-get-fix-status" title="gypsy_device_get_fix_status ()">gypsy_device_get_fix_status</a>       (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GypsyDevice.html#gypsy-device-start" title="gypsy_device_start ()">gypsy_device_start</a>                  (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+<a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            <a class="link" href="GypsyDevice.html#gypsy-device-stop" title="gypsy_device_stop ()">gypsy_device_stop</a>                   (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);
+</pre>
+</div>
+<div class="refsect1" title="Object Hierarchy">
+<a name="GypsyDevice.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  <a
+href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject"
+>GObject</a>
+   +----GypsyDevice
+</pre>
+</div>
+<div class="refsect1" title="Properties">
+<a name="GypsyDevice.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyDevice.html#GypsyDevice--object-path" title='The "object-path" property'>object-path</a>"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="GypsyDevice.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GypsyDevice.html#GypsyDevice-connection-changed" title='The "connection-changed" signal'>connection-changed</a>"                             : Run First / No Recursion
+  "<a class="link" href="GypsyDevice.html#GypsyDevice-fix-status-changed" title='The "fix-status-changed" signal'>fix-status-changed</a>"                             : Run First / No Recursion
+</pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="GypsyDevice.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a> is used whenever the client program wishes to know about
+changes in the device's status. It has signals for connection status and
+fix status. It can also be used to tell gypsy-daemon to start or stop parsing
+sentences from the GPS device.
+</p>
+<p>
+A <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a> object is created using <a class="link" href="GypsyDevice.html#gypsy-device-new" title="gypsy_device_new ()"><code class="function">gypsy_device_new()</code></a> using the D-Bus path of
+the GPS device. This path is returned from the <a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()"><code class="function">gypsy_control_create()</code></a> 
+function. The client can start the GPS data stream with <a class="link" href="GypsyDevice.html#gypsy-device-start" title="gypsy_device_start ()"><code class="function">gypsy_device_start()</code></a>,
+stop it with <a class="link" href="GypsyDevice.html#gypsy-device-stop" title="gypsy_device_stop ()"><code class="function">gypsy_device_stop()</code></a>, or find out about the status with
+<a class="link" href="GypsyDevice.html#gypsy-device-get-fix-status" title="gypsy_device_get_fix_status ()"><code class="function">gypsy_device_get_fix_status()</code></a> and <a class="link" href="GypsyDevice.html#gypsy-device-get-connection-status" title="gypsy_device_get_connection_status ()"><code class="function">gypsy_device_get_connection_status()</code></a>.
+</p>
+<p>
+As the fix status and connection status change, <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a> will emit the
+<a class="link" href="GypsyDevice.html#GypsyDevice-fix-status-changed" title='The "fix-status-changed" signal'><span class="type">"fix-status-changed"</span></a> and <a class="link" href="GypsyDevice.html#GypsyDevice-connection-changed" title='The "connection-changed" signal'><span class="type">"connection-changed"</span></a> signals
+respectively.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+GypsyDevice *device;
+GError *error = NULL;
+
+. . .
+
+/* path comes from the <a class="link" href="GypsyControl.html#gypsy-control-create" title="gypsy_control_create ()">gypsy_control_create</a>() function */
+device = <a class="link" href="GypsyDevice.html#gypsy-device-new" title="gypsy_device_new ()">gypsy_device_new</a> (path);
+g_signal_connect (device, "connection-changed", G_CALLBACK (connection_changed), NULL);
+<a class="link" href="GypsyDevice.html#gypsy-device-start" title="gypsy_device_start ()">gypsy_device_start</a> (device, &amp;error);
+if (error != NULL) {
+  g_warning ("Error starting GPS: %s", error-&gt;message);
+  g_error_free (error);
+}
+
+. . .
+
+static void connection_changed (GypsyDevice *device, gboolean connected, gpointer data)
+{
+  g_print ("Connection status: %s\n", connected ? "Connected" : "Disconnected");
+}
+</pre></div>
+<p>
+</p>
+</div>
+<div class="refsect1" title="Details">
+<a name="GypsyDevice.details"></a><h2>Details</h2>
+<div class="refsect2" title="GypsyDevice">
+<a name="GypsyDevice-struct"></a><h3>GypsyDevice</h3>
+<pre class="programlisting">typedef struct _GypsyDevice GypsyDevice;</pre>
+<p>
+There are no public fields in <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_DEVICE_DBUS_SERVICE">
+<a name="GYPSY-DEVICE-DBUS-SERVICE--CAPS"></a><h3>GYPSY_DEVICE_DBUS_SERVICE</h3>
+<pre class="programlisting">#define GYPSY_DEVICE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</pre>
+<p>
+A define containing the name of the Device service</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="GYPSY_DEVICE_DBUS_INTERFACE">
+<a name="GYPSY-DEVICE-DBUS-INTERFACE--CAPS"></a><h3>GYPSY_DEVICE_DBUS_INTERFACE</h3>
+<pre class="programlisting">#define GYPSY_DEVICE_DBUS_INTERFACE "org.freedesktop.Gypsy.Device"
+</pre>
+<p>
+A define containing the name of the Device interface</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" title="enum GypsyDeviceFixStatus">
+<a name="GypsyDeviceFixStatus"></a><h3>enum GypsyDeviceFixStatus</h3>
+<pre class="programlisting">typedef enum {
+	GYPSY_DEVICE_FIX_STATUS_INVALID = 0,
+	GYPSY_DEVICE_FIX_STATUS_NONE,
+	GYPSY_DEVICE_FIX_STATUS_2D,
+	GYPSY_DEVICE_FIX_STATUS_3D
+} GypsyDeviceFixStatus;
+</pre>
+<p>
+An enumeration representing the various fix states that a GPS device can be in.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="GYPSY-DEVICE-FIX-STATUS-INVALID--CAPS"></a><span class="term"><code class="literal">GYPSY_DEVICE_FIX_STATUS_INVALID</code></span></p></td>
+<td> The fix is invalid
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-DEVICE-FIX-STATUS-NONE--CAPS"></a><span class="term"><code class="literal">GYPSY_DEVICE_FIX_STATUS_NONE</code></span></p></td>
+<td> A fix has not yet been obtained
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-DEVICE-FIX-STATUS-2D--CAPS"></a><span class="term"><code class="literal">GYPSY_DEVICE_FIX_STATUS_2D</code></span></p></td>
+<td> A fix with latitude and longitude has been obtained
+</td>
+</tr>
+<tr>
+<td><p><a name="GYPSY-DEVICE-FIX-STATUS-3D--CAPS"></a><span class="term"><code class="literal">GYPSY_DEVICE_FIX_STATUS_3D</code></span></p></td>
+<td> A fix with latitude, longitude and altitude has been obtained
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_device_new ()">
+<a name="gypsy-device-new"></a><h3>gypsy_device_new ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *       gypsy_device_new                    (const char *object_path);</pre>
+<p>
+Creates a new <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a> that points to <em class="parameter"><code>object_path</code></em></p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object_path</code></em> :</span></p></td>
+<td> Object path to the device
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A pointer to a <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_device_get_connection_status ()">
+<a name="gypsy-device-get-connection-status"></a><h3>gypsy_device_get_connection_status ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gypsy_device_get_connection_status  (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Obtains the connection status of <em class="parameter"><code>device</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A pointer to a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to return an error in.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> if the device is connected, <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_device_get_fix_status ()">
+<a name="gypsy-device-get-fix-status"></a><h3>gypsy_device_get_fix_status ()</h3>
+<pre class="programlisting"><a class="link" href="GypsyDevice.html#GypsyDeviceFixStatus" title="enum GypsyDeviceFixStatus">GypsyDeviceFixStatus</a>  gypsy_device_get_fix_status       (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Obtains the current fix status of <em class="parameter"><code>device</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A pointer to a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to return a error in.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A <a class="link" href="GypsyDevice.html#GypsyDeviceFixStatus" title="enum GypsyDeviceFixStatus"><span class="type">GypsyDeviceFixStatus</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_device_start ()">
+<a name="gypsy-device-start"></a><h3>gypsy_device_start ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gypsy_device_start                  (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Starts the connection to the physical device pointed to by <em class="parameter"><code>device</code></em>, and
+listens for incoming messages.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A pointer to a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to return the error in
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> on success, <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="gypsy_device_stop ()">
+<a name="gypsy-device-stop"></a><h3>gypsy_device_stop ()</h3>
+<pre class="programlisting"><a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>            gypsy_device_stop                   (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *device,
+                                                         <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+>GError</a> **error);</pre>
+<p>
+Stops the physical device pointed to by <em class="parameter"><code>device</code></em>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td> A <a class="link" href="GypsyDevice.html" title="GypsyDevice"><span class="type">GypsyDevice</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td> A pointer to a <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"
+><span class="type">GError</span></a> to return the error in
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#TRUE--CAPS"
+><span class="type">TRUE</span></a> on success, <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#FALSE--CAPS"
+><span class="type">FALSE</span></a> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="GypsyDevice.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" title='The "object-path" property'>
+<a name="GypsyDevice--object-path"></a><h3>The <code class="literal">"object-path"</code> property</h3>
+<pre class="programlisting">  "object-path"              <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gchar"
+>gchar</a>*                : Write / Construct Only</pre>
+<p>
+The path of the Gypsy GPS object</p>
+<p>
+</p>
+<p>Default value: ""</p>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="GypsyDevice.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" title='The "connection-changed" signal'>
+<a name="GypsyDevice-connection-changed"></a><h3>The <code class="literal">"connection-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *connected,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gboolean"
+>gboolean</a>     arg1,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>     user_data)      : Run First / No Recursion</pre>
+<p>
+The ::connection-changed signal is emitted whenever the device
+connection changes.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connected</code></em> :</span></p></td>
+<td> Whether or not the device is connected
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title='The "fix-status-changed" signal'>
+<a name="GypsyDevice-fix-status-changed"></a><h3>The <code class="literal">"fix-status-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GypsyDevice.html" title="GypsyDevice">GypsyDevice</a> *fix_status,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gint"
+>gint</a>         arg1,
+                                                        <a
+href="http://library.gnome.org/devel/glib/unstable/glib-Basic-Types.html#gpointer"
+>gpointer</a>     user_data)       : Run First / No Recursion</pre>
+<p>
+The ::fix-status-changed signal is emitted whenever the GPS device
+reports that its fix status has changed. <em class="parameter"><code>fix_status</code></em> is a
+<a class="link" href="GypsyDevice.html#GypsyDeviceFixStatus" title="enum GypsyDeviceFixStatus"><span class="type">GypsyDeviceFixStatus</span></a></p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fix_status</code></em> :</span></p></td>
+<td> The new fix status
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

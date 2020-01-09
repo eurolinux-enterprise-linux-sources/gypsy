@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>org.freedesktop.Gypsy.Server</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="prev" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="next" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gypsy-server-interfaces.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="gypsy-server-interfaces.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="gypsy-client-interfaces.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#Server.synopsis" class="shortcut">Top</a>
+                 | 
+                <a href="#Server.description" class="shortcut">Description</a>
+                 | 
+                <a href="#Server.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                 | 
+                <a href="#Server.properties" class="shortcut">Properties</a>
+                 | 
+                <a href="#Server.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" title="org.freedesktop.Gypsy.Server">
+<a name="Server"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">org.freedesktop.Gypsy.Server</span></h2>
+<p>org.freedesktop.Gypsy.Server — Server interface</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv" title="Methods">
+<h2>Methods</h2>
+<pre class="synopsis"><a
+href="/usr/share/gtk-doc/html/gypsy/Server.html#Server.Create"
+>Create</a>   (in  's'device,
+          out 'o'path)
+<a
+href="/usr/share/gtk-doc/html/gypsy/Server.html#Server.Shutdown"
+>Shutdown</a> (in  'o'path)
+</pre>
+</div>
+<div class="refsect1" title="Signals">
+<a name="id564119"></a><h2>Signals</h2>
+<pre class="synopsis"></pre>
+</div>
+<div class="refsect1" title="Implemented Interfaces">
+<a name="id564134"></a><h2>Implemented Interfaces</h2>
+<p>org.freedesktop.Gypsy.Server implements
+    org.freedesktop.DBus.Introspectable,
+    org.freedesktop.DBus.Properties
+    </p>
+</div>
+<div class="refsect1" title="Properties">
+<a name="id564150"></a><h2>Properties</h2>
+<pre class="synopsis"></pre>
+</div>
+<div class="refsect1" title="Description">
+<a name="id563820"></a><h2>Description</h2>
+<p>
+      </p>
+<p>
+        The Server object is used to connect to and obtain the object path of
+        specific GPS devices.
+      </p>
+<p>
+    </p>
+</div>
+<div class="refsect1" title="Details">
+<a name="id563840"></a><h2>Details</h2>
+<div class="refsect2" title="Create ()">
+<a name="id563851"></a><h3>
+<a name="Server.Create"></a>Create ()</h3>
+<pre class="programlisting">Create (in  's' device,
+        out 'o' path)</pre>
+          Connect to the specified GPS device, and create an object implementing
+          the <a class="xref" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">Gypsy Client Interface</a>.
+        <div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em>:</span></p></td>
+<td><p>
+            A string identifying the device to connect to. For Bluetooth devices
+            this is the Bluetooth address (such as 00:11:22:33:44:55), for
+            serial devices it is the device node (such as /dev/ttyS0).
+          </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em>:</span></p></td>
+<td><p>
+            The object path of the GPS device.
+          </p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" title="Shutdown ()">
+<a name="id563788"></a><h3>
+<a name="Server.Shutdown"></a>Shutdown ()</h3>
+<pre class="programlisting">Shutdown (in  'o' path)</pre>
+          Disconnect from the specified GPS device.
+        <div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em>:</span></p></td>
+<td><p>
+            The object path of the GPS device.
+          </p></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" title="Signal Details">
+<a name="id564951"></a><h2>Signal Details</h2>
+</div>
+<div class="refsect1" title="Property Details">
+<a name="id564963"></a><h2>Property Details</h2>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

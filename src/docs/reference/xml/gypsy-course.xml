@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<refentry id="GypsyCourse">
+<refmeta>
+<refentrytitle role="top_of_page" id="GypsyCourse.top_of_page">GypsyCourse</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>GYPSY Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>GypsyCourse</refname>
+<refpurpose>Object for obtaining course information</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="GypsyCourse.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+                    <link linkend="GypsyCourse-struct">GypsyCourse</link>;
+#define             <link linkend="GYPSY-COURSE-DBUS-INTERFACE--CAPS">GYPSY_COURSE_DBUS_INTERFACE</link>
+#define             <link linkend="GYPSY-COURSE-DBUS-SERVICE--CAPS">GYPSY_COURSE_DBUS_SERVICE</link>
+enum                <link linkend="GypsyCourseFields">GypsyCourseFields</link>;
+<link linkend="GypsyCourse">GypsyCourse</link> *       <link linkend="gypsy-course-new">gypsy_course_new</link>                    (const <link linkend="char">char</link> *object_path);
+<link linkend="GypsyCourseFields">GypsyCourseFields</link>   <link linkend="gypsy-course-get-course">gypsy_course_get_course</link>             (<link linkend="GypsyCourse">GypsyCourse</link> *course,
+                                                         <link linkend="int">int</link> *timestamp,
+                                                         <link linkend="double">double</link> *speed,
+                                                         <link linkend="double">double</link> *direction,
+                                                         <link linkend="double">double</link> *climb,
+                                                         <link linkend="GError">GError</link> **error);
+</synopsis>
+</refsynopsisdiv>
+
+<refsect1 id="GypsyCourse.object-hierarchy" role="object_hierarchy">
+<title role="object_hierarchy.title">Object Hierarchy</title>
+<synopsis>
+  <link linkend="GObject">GObject</link>
+   +----GypsyCourse
+</synopsis>
+</refsect1>
+
+
+
+
+
+<refsect1 id="GypsyCourse.properties" role="properties">
+<title role="properties.title">Properties</title>
+<synopsis>
+  &quot;<link linkend="GypsyCourse--object-path">object-path</link>&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only
+</synopsis>
+</refsect1>
+
+<refsect1 id="GypsyCourse.signals" role="signal_proto">
+<title role="signal_proto.title">Signals</title>
+<synopsis>
+  &quot;<link linkend="GypsyCourse-course-changed">course-changed</link>&quot;                                 : Run First / No Recursion
+</synopsis>
+</refsect1>
+
+
+<refsect1 id="GypsyCourse.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="GypsyCourse"><type>GypsyCourse</type></link> is used whenever the client program wishes to know about
+GPS course changes. It can report the current course, and has a signal
+to notify listeners of changes. The course consists of the speed, direction
+and rate of ascent or descent (called the climb).
+</para>
+<para>
+A <link linkend="GypsyCourse"><type>GypsyCourse</type></link> object is created using <link linkend="gypsy-course-new"><function>gypsy_course_new()</function></link> using the 
+D-Bus path of the GPS device. This path is returned from the 
+<link linkend="gypsy-control-create"><function>gypsy_control_create()</function></link> function. The client can then find out about the
+course with <link linkend="gypsy-course-get-course"><function>gypsy_course_get_course()</function></link>.
+</para>
+<para>
+As the course information changes <link linkend="GypsyCourse"><type>GypsyCourse</type></link> will emit the 
+course-changed signal. This signal contains the course information if 
+gypsy-daemon knows it. It has a fields paramater which is a bitmask of
+<link linkend="GypsyCourseFields"><type>GypsyCourseFields</type></link> which indicates which of the speed, direction or
+climb contains valid information. The timestamp will always be valid
+if it is greater than 0.
+</para>
+<para>
+<informalexample>
+<programlisting>
+GypsyCourse *course;
+GError *error = NULL;
+
+. . .
+
+/ * path comes from the gypsy_control_create() function * /
+course = gypsy_course_new (path);
+g_signal_connect (course, "course-changed", G_CALLBACK (course_changed), NULL);
+
+. . .
+
+static void 
+course_changed (GypsyCourse *course, 
+GypsyCourseFields fields,
+int timestamp,
+double speed,
+double direction,
+double climb,
+gpointer userdata)
+{
+&nbsp;&nbsp;g_print ("speed: %fm/s\n", (fields &amp; GYPSY_COURSE_FIELDS_SPEED) ? speed : -1.0);
+}
+</programlisting>
+</informalexample></para>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="GypsyCourse.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="GypsyCourse-struct" role="struct">
+<title>GypsyCourse</title>
+<indexterm zone="GypsyCourse-struct"><primary sortas="GypsyCourse">GypsyCourse</primary></indexterm><programlisting>typedef struct _GypsyCourse GypsyCourse;</programlisting>
+<para>
+There are no public fields in <link linkend="GypsyCourse"><type>GypsyCourse</type></link>.</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-COURSE-DBUS-INTERFACE--CAPS" role="macro">
+<title>GYPSY_COURSE_DBUS_INTERFACE</title>
+<indexterm zone="GYPSY-COURSE-DBUS-INTERFACE--CAPS"><primary sortas="GYPSY_COURSE_DBUS_INTERFACE">GYPSY_COURSE_DBUS_INTERFACE</primary></indexterm><programlisting>#define GYPSY_COURSE_DBUS_INTERFACE "org.freedesktop.Gypsy.Course"
+</programlisting>
+<para>
+A define containing the name of the Course interface</para>
+<para>
+</para></refsect2>
+<refsect2 id="GYPSY-COURSE-DBUS-SERVICE--CAPS" role="macro">
+<title>GYPSY_COURSE_DBUS_SERVICE</title>
+<indexterm zone="GYPSY-COURSE-DBUS-SERVICE--CAPS"><primary sortas="GYPSY_COURSE_DBUS_SERVICE">GYPSY_COURSE_DBUS_SERVICE</primary></indexterm><programlisting>#define GYPSY_COURSE_DBUS_SERVICE "org.freedesktop.Gypsy"
+</programlisting>
+<para>
+A define containing the address of the Course service</para>
+<para>
+</para></refsect2>
+<refsect2 id="GypsyCourseFields" role="enum">
+<title>enum GypsyCourseFields</title>
+<indexterm zone="GypsyCourseFields"><primary sortas="GypsyCourseFields">GypsyCourseFields</primary></indexterm><programlisting>typedef enum {
+	GYPSY_COURSE_FIELDS_NONE = 0,
+	GYPSY_COURSE_FIELDS_SPEED = 1 &lt;&lt; 0,
+	GYPSY_COURSE_FIELDS_DIRECTION = 1 &lt;&lt; 1,
+	GYPSY_COURSE_FIELDS_CLIMB = 1 &lt;&lt; 2
+} GypsyCourseFields;
+</programlisting>
+<para>
+A bitfield telling which fields in the course_changed callback are valid</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="GYPSY-COURSE-FIELDS-NONE--CAPS" role="constant">
+<term><literal>GYPSY_COURSE_FIELDS_NONE</literal></term>
+<listitem><simpara> None of the fields are valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-COURSE-FIELDS-SPEED--CAPS" role="constant">
+<term><literal>GYPSY_COURSE_FIELDS_SPEED</literal></term>
+<listitem><simpara> The speed field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-COURSE-FIELDS-DIRECTION--CAPS" role="constant">
+<term><literal>GYPSY_COURSE_FIELDS_DIRECTION</literal></term>
+<listitem><simpara> The direction field is valid
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="GYPSY-COURSE-FIELDS-CLIMB--CAPS" role="constant">
+<term><literal>GYPSY_COURSE_FIELDS_CLIMB</literal></term>
+<listitem><simpara> The climb field is valid
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-course-new" role="function">
+<title>gypsy_course_new ()</title>
+<indexterm zone="gypsy-course-new"><primary sortas="gypsy_course_new">gypsy_course_new</primary></indexterm><programlisting><link linkend="GypsyCourse">GypsyCourse</link> *       gypsy_course_new                    (const <link linkend="char">char</link> *object_path);</programlisting>
+<para>
+Creates a new <link linkend="GypsyCourse"><type>GypsyCourse</type></link> object that listens for course changes
+from the GPS device found at <parameter>object_path</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>object_path</parameter>&#160;:</term>
+<listitem><simpara> Object path to the GPS device.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A <link linkend="GypsyCourse"><type>GypsyCourse</type></link> object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="gypsy-course-get-course" role="function">
+<title>gypsy_course_get_course ()</title>
+<indexterm zone="gypsy-course-get-course"><primary sortas="gypsy_course_get_course">gypsy_course_get_course</primary></indexterm><programlisting><link linkend="GypsyCourseFields">GypsyCourseFields</link>   gypsy_course_get_course             (<link linkend="GypsyCourse">GypsyCourse</link> *course,
+                                                         <link linkend="int">int</link> *timestamp,
+                                                         <link linkend="double">double</link> *speed,
+                                                         <link linkend="double">double</link> *direction,
+                                                         <link linkend="double">double</link> *climb,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Obtains the course details from <parameter>course</parameter>. <parameter>timestamp</parameter>, <parameter>speed</parameter>, <parameter>direction</parameter> and
+<parameter>climb</parameter> can be <link linkend="NULL--CAPS"><type>NULL</type></link> if that detail is not required.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>course</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GypsyCourse"><type>GypsyCourse</type></link> object
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timestamp</parameter>&#160;:</term>
+<listitem><simpara> Pointer for the timestamp to be returned
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>speed</parameter>&#160;:</term>
+<listitem><simpara> Pointer for the speed to be returned
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>direction</parameter>&#160;:</term>
+<listitem><simpara> Pointer for the direction to be returned
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>climb</parameter>&#160;:</term>
+<listitem><simpara> Pointer for the climb to be returned
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&#160;:</term>
+<listitem><simpara> A <link linkend="GError"><type>GError</type></link> for error return
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A bitmask of the fields that are set.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+<refsect1 id="GypsyCourse.property-details" role="property_details">
+<title role="property_details.title">Property Details</title>
+<refsect2 id="GypsyCourse--object-path" role="property"><title>The <literal>&quot;object-path&quot;</literal> property</title>
+<indexterm zone="GypsyCourse--object-path"><primary sortas="GypsyCourse:object-path">GypsyCourse:object-path</primary></indexterm><programlisting>  &quot;object-path&quot;              <link linkend="gchar">gchar</link>*                : Write / Construct Only</programlisting>
+<para>
+The path of the Gypsy GPS object</para>
+<para>
+</para><para>Default value: ""</para>
+</refsect2>
+</refsect1>
+
+<refsect1 id="GypsyCourse.signal-details" role="signals">
+<title role="signals.title">Signal Details</title>
+<refsect2 id="GypsyCourse-course-changed" role="signal"><title>The <literal>&quot;course-changed&quot;</literal> signal</title>
+<indexterm zone="GypsyCourse-course-changed"><primary sortas="GypsyCourse::course-changed">GypsyCourse::course-changed</primary></indexterm><programlisting><link linkend="void">void</link>                user_function                      (<link linkend="GypsyCourse">GypsyCourse</link> *fields,
+                                                        <link linkend="gint">gint</link>         timestamp,
+                                                        <link linkend="gint">gint</link>         speed,
+                                                        <link linkend="gdouble">gdouble</link>      direction,
+                                                        <link linkend="gdouble">gdouble</link>      climb,
+                                                        <link linkend="gdouble">gdouble</link>      arg5,
+                                                        <link linkend="gpointer">gpointer</link>     user_data)      : Run First / No Recursion</programlisting>
+<para>
+The ::course-changed signal is emitted when the GPS device
+indicates that one or more of the course fields has changed.
+The fields which have changed will be indicated in the <parameter>fields</parameter>
+bitmask.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>fields</parameter>&#160;:</term>
+<listitem><simpara> A bitmask of <link linkend="GypsyCourseFields"><type>GypsyCourseFields</type></link> indicating which of the following fields are valid
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timestamp</parameter>&#160;:</term>
+<listitem><simpara> The time this change occurred
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>speed</parameter>&#160;:</term>
+<listitem><simpara> The new speed
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>direction</parameter>&#160;:</term>
+<listitem><simpara> The new direction
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>climb</parameter>&#160;:</term>
+<listitem><simpara> The new rate of climb
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara>user data set when the signal handler was connected.</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+</refsect1>
+
+
+
+</refentry>

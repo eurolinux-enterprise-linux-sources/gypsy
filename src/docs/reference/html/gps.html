@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Getting Your Location</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
+<link rel="home" href="index.html" title="Gypsy Reference Manual">
+<link rel="up" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="prev" href="connecting.html" title="Connecting to a GPS">
+<link rel="next" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<meta name="generator" content="GTK-Doc V1.11 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="reference" href="rn01.html" title="Gypsy Overview">
+<link rel="reference" href="rn02.html" title="Tutorials">
+<link rel="chapter" href="ch01.html" title="Programming Gypsy With Python">
+<link rel="reference" href="gypsy-server-interfaces.html" title="Gypsy Server Interface">
+<link rel="reference" href="gypsy-client-interfaces.html" title="Gypsy Client Interface">
+<link rel="reference" href="rn05.html" title="LibGypsy API Reference">
+<link rel="chapter" href="ch02.html" title="Gypsy-Daemon Control">
+<link rel="chapter" href="ch03.html" title="GPS Data Objects">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="connecting.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">Gypsy Reference Manual</th>
+<td><a accesskey="n" href="gypsy-server-interfaces.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="section" title="Getting Your Location">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="gps"></a>Getting Your Location</h2></div></div></div>
+<p>
+      As the most useful thing a GPS can do is tell you its location, the most
+      common interface implemented by the GPS object is
+      <span class="interface">Position</span>.  This interface has a method called
+      <code class="methodname">GetPosition</code> which will return the current
+      position, and a signal called <code class="methodname">PositionChanged</code>
+      which is emitted when the position has changed.  Note that although the
+      GPS device itself will report a new position every second, Gypsy will only
+      emit <code class="methodname">PositionChanged</code> signals if the position has
+      actually changed since the last emission.
+    </p>
+<p>
+      However, before you can use the GPS object for anything useful, you must
+      tell Gypsy to activate the GPS.  This is done via the
+      <code class="methodname">Start</code> method on the <span class="interface">Device</span>
+      interface.
+    </p>
+<pre class="programlisting">device = dbus.Interface(gps, dbus_interface="org.freedesktop.Gypsy.Device")
+device.Start()</pre>
+<p>
+      The <code class="methodname">GetPosition</code> method and
+      <code class="methodname">PositionChanged</code> signal both have the same
+      arguments.  The first argument is a bitset of fields which are valid.
+      This is very important because often the GPS will only be able to get a
+      longitude/latitude fix, and not be able to determine the altitude.  Next
+      is a Unix-style timestamp, so the application can know when the location
+      was obtained.  Next are the longitude and latitude, in fractional degrees.
+      Finally the altitude, in meters.
+    </p>
+<pre class="programlisting"># Some constants we'll need later
+POSITION_FIELDS_NONE = 0
+POSITION_FIELDS_LATITUDE = 1 &lt;&lt; 0
+POSITION_FIELDS_LONGITUDE = 1 &lt;&lt; 1
+POSITION_FIELDS_ALTITUDE = 1 &lt;&lt; 2
+# Get a proxy to the Position interface, and listen for position changed signals
+position = dbus.Interface(gps, dbus_interface="org.freedesktop.Gypsy.Position")
+def position_changed(fields_set, timestamp, latitude, longitude, altitude):
+    print "%+2f, %+2f (%1fm)" % (
+      (fields_set &amp; POSITION_FIELDS_LATITUDE) and latitude or -1.0,
+      (fields_set &amp; POSITION_FIELDS_LONGITUDE) and longitude or -1.0,
+      (fields_set &amp; POSITION_FIELDS_ALTITUDE) and altitude or -1.0)
+position.connect_to_signal("PositionChanged", position_changed)</pre>
+<p>
+      Finally, we can enter the main loop. As the location changes we'll get
+      signals, which result in the <code class="methodname">position_changed</code>
+      callback being called, which prints out the current position.
+    </p>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.11</div>
+</body>
+</html>

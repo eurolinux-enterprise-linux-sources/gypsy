@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="Gypsy Reference Manual" link="index.html" author="Iain HolmesRoss Burton" name="gypsy" version="2" language="c">
+  <chapters>
+    <sub name="Gypsy Overview" link="rn01.html">
+      <sub name="Gypsy's Design" link="gypsy-design.html"/>
+      <sub name="Design Flaws in GPSD" link="why-not-gpsd.html"/>
+    </sub>
+    <sub name="Tutorials" link="rn02.html">
+      <sub name="Programming Gypsy With Python" link="ch01.html">
+        <sub name="Overview of Gypsy" link="ch01.html#overview"/>
+        <sub name="Connecting to a GPS" link="connecting.html"/>
+        <sub name="Getting Your Location" link="gps.html"/>
+      </sub>
+    </sub>
+    <sub name="Gypsy Server Interface" link="gypsy-server-interfaces.html">
+      <sub name="org.freedesktop.Gypsy.Server" link="Server.html"/>
+    </sub>
+    <sub name="Gypsy Client Interface" link="gypsy-client-interfaces.html">
+      <sub name="org.freedesktop.Gypsy.Accuracy" link="Accuracy.html"/>
+      <sub name="org.freedesktop.Gypsy.Course" link="Course.html"/>
+      <sub name="org.freedesktop.Gypsy.Device" link="Device.html"/>
+      <sub name="org.freedesktop.Gypsy.Position" link="Position.html"/>
+      <sub name="org.freedesktop.Gypsy.Satellite" link="Satellite.html"/>
+      <sub name="org.freedesktop.Gypsy.Time" link="Time.html"/>
+    </sub>
+    <sub name="LibGypsy API Reference" link="rn05.html">
+      <sub name="Gypsy-Daemon Control" link="ch02.html">
+        <sub name="GypsyControl" link="GypsyControl.html"/>
+      </sub>
+      <sub name="GPS Data Objects" link="ch03.html">
+        <sub name="GypsyDevice" link="GypsyDevice.html"/>
+        <sub name="GypsyAccuracy" link="GypsyAccuracy.html"/>
+        <sub name="GypsyCourse" link="GypsyCourse.html"/>
+        <sub name="GypsyPosition" link="GypsyPosition.html"/>
+        <sub name="GypsySatellite" link="GypsySatellite.html"/>
+        <sub name="GypsyTime" link="gypsy-GypsyTime.html"/>
+      </sub>
+    </sub>
+  </chapters>
+  <functions>
+    <keyword type="" name="Create ()" link="Server.html#Server.Create"/>
+    <keyword type="" name="Shutdown ()" link="Server.html#Server.Shutdown"/>
+    <keyword type="" name="GetAccuracy ()" link="Accuracy.html#Accuracy.GetAccuracy"/>
+    <keyword type="" name="The AccuracyChanged signal" link="Accuracy.html#Accuracy::AccuracyChanged"/>
+    <keyword type="" name="GetCourse ()" link="Course.html#Course.GetCourse"/>
+    <keyword type="" name="The CourseChanged signal" link="Course.html#Course::CourseChanged"/>
+    <keyword type="" name="Start ()" link="Device.html#Device.Start"/>
+    <keyword type="" name="Stop ()" link="Device.html#Device.Stop"/>
+    <keyword type="" name="GetFixStatus ()" link="Device.html#Device.GetFixStatus"/>
+    <keyword type="" name="GetConnectionStatus ()" link="Device.html#Device.GetConnectionStatus"/>
+    <keyword type="" name="The FixStatusChanged signal" link="Device.html#Device::FixStatusChanged"/>
+    <keyword type="" name="The ConnectionStatusChanged signal" link="Device.html#Device::ConnectionStatusChanged"/>
+    <keyword type="" name="GetPosition ()" link="Position.html#Position.GetPosition"/>
+    <keyword type="" name="The PositionChanged signal" link="Position.html#Position::PositionChanged"/>
+    <keyword type="" name="GetSatellites ()" link="Satellite.html#Satellite.GetSatellites"/>
+    <keyword type="" name="The SatellitesChanged signal" link="Satellite.html#Satellite::SatellitesChanged"/>
+    <keyword type="" name="GetTime ()" link="Time.html#Time.GetTime"/>
+    <keyword type="" name="The TimeChanged signal" link="Time.html#Time::TimeChanged"/>
+    <keyword type="struct" name="GypsyControl" link="GypsyControl.html#GypsyControl-struct"/>
+    <keyword type="macro" name="GYPSY_CONTROL_DBUS_SERVICE" link="GypsyControl.html#GYPSY-CONTROL-DBUS-SERVICE--CAPS"/>
+    <keyword type="macro" name="GYPSY_CONTROL_DBUS_PATH" link="GypsyControl.html#GYPSY-CONTROL-DBUS-PATH--CAPS"/>
+    <keyword type="macro" name="GYPSY_CONTROL_DBUS_INTERFACE" link="GypsyControl.html#GYPSY-CONTROL-DBUS-INTERFACE--CAPS"/>
+    <keyword type="function" name="gypsy_control_get_default ()" link="GypsyControl.html#gypsy-control-get-default"/>
+    <keyword type="function" name="gypsy_control_create ()" link="GypsyControl.html#gypsy-control-create"/>
+    <keyword type="struct" name="GypsyDevice" link="GypsyDevice.html#GypsyDevice-struct"/>
+    <keyword type="macro" name="GYPSY_DEVICE_DBUS_SERVICE" link="GypsyDevice.html#GYPSY-DEVICE-DBUS-SERVICE--CAPS"/>
+    <keyword type="macro" name="GYPSY_DEVICE_DBUS_INTERFACE" link="GypsyDevice.html#GYPSY-DEVICE-DBUS-INTERFACE--CAPS"/>
+    <keyword type="enum" name="enum GypsyDeviceFixStatus" link="GypsyDevice.html#GypsyDeviceFixStatus"/>
+    <keyword type="function" name="gypsy_device_new ()" link="GypsyDevice.html#gypsy-device-new"/>
+    <keyword type="function" name="gypsy_device_get_connection_status ()" link="GypsyDevice.html#gypsy-device-get-connection-status"/>
+    <keyword type="function" name="gypsy_device_get_fix_status ()" link="GypsyDevice.html#gypsy-device-get-fix-status"/>
+    <keyword type="function" name="gypsy_device_start ()" link="GypsyDevice.html#gypsy-device-start"/>
+    <keyword type="function" name="gypsy_device_stop ()" link="GypsyDevice.html#gypsy-device-stop"/>
+    <keyword type="property" name="The &quot;object-path&quot; property" link="GypsyDevice.html#GypsyDevice--object-path"/>
+    <keyword type="signal" name="The &quot;connection-changed&quot; signal" link="GypsyDevice.html#GypsyDevice-connection-changed"/>
+    <keyword type="signal" name="The &quot;fix-status-changed&quot; signal" link="GypsyDevice.html#GypsyDevice-fix-status-changed"/>
+    <keyword type="struct" name="GypsyAccuracy" link="GypsyAccuracy.html#GypsyAccuracy-struct"/>
+    <keyword type="macro" name="GYPSY_ACCURACY_DBUS_SERVICE" link="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-SERVICE--CAPS"/>
+    <keyword type="macro" name="GYPSY_ACCURACY_DBUS_INTERFACE" link="GypsyAccuracy.html#GYPSY-ACCURACY-DBUS-INTERFACE--CAPS"/>
+    <keyword type="enum" name="enum GypsyAccuracyFields" link="GypsyAccuracy.html#GypsyAccuracyFields"/>
+    <keyword type="function" name="gypsy_accuracy_new ()" link="GypsyAccuracy.html#gypsy-accuracy-new"/>
+    <keyword type="function" name="gypsy_accuracy_get_accuracy ()" link="GypsyAccuracy.html#gypsy-accuracy-get-accuracy"/>
+    <keyword type="property" name="The &quot;object-path&quot; property" link="GypsyAccuracy.html#GypsyAccuracy--object-path"/>
+    <keyword type="signal" name="The &quot;accuracy-changed&quot; signal" link="GypsyAccuracy.html#GypsyAccuracy-accuracy-changed"/>
+    <keyword type="struct" name="GypsyCourse" link="GypsyCourse.html#GypsyCourse-struct"/>
+    <keyword type="macro" name="GYPSY_COURSE_DBUS_INTERFACE" link="GypsyCourse.html#GYPSY-COURSE-DBUS-INTERFACE--CAPS"/>
+    <keyword type="macro" name="GYPSY_COURSE_DBUS_SERVICE" link="GypsyCourse.html#GYPSY-COURSE-DBUS-SERVICE--CAPS"/>
+    <keyword type="enum" name="enum GypsyCourseFields" link="GypsyCourse.html#GypsyCourseFields"/>
+    <keyword type="function" name="gypsy_course_new ()" link="GypsyCourse.html#gypsy-course-new"/>
+    <keyword type="function" name="gypsy_course_get_course ()" link="GypsyCourse.html#gypsy-course-get-course"/>
+    <keyword type="property" name="The &quot;object-path&quot; property" link="GypsyCourse.html#GypsyCourse--object-path"/>
+    <keyword type="signal" name="The &quot;course-changed&quot; signal" link="GypsyCourse.html#GypsyCourse-course-changed"/>
+    <keyword type="struct" name="GypsyPosition" link="GypsyPosition.html#GypsyPosition-struct"/>
+    <keyword type="macro" name="GYPSY_POSITION_DBUS_INTERFACE" link="GypsyPosition.html#GYPSY-POSITION-DBUS-INTERFACE--CAPS"/>
+    <keyword type="macro" name="GYPSY_POSITION_DBUS_SERVICE" link="GypsyPosition.html#GYPSY-POSITION-DBUS-SERVICE--CAPS"/>
+    <keyword type="enum" name="enum GypsyPositionFields" link="GypsyPosition.html#GypsyPositionFields"/>
+    <keyword type="function" name="gypsy_position_new ()" link="GypsyPosition.html#gypsy-position-new"/>
+    <keyword type="function" name="gypsy_position_get_position ()" link="GypsyPosition.html#gypsy-position-get-position"/>
+    <keyword type="property" name="The &quot;object-path&quot; property" link="GypsyPosition.html#GypsyPosition--object-path"/>
+    <keyword type="signal" name="The &quot;position-changed&quot; signal" link="GypsyPosition.html#GypsyPosition-position-changed"/>
+    <keyword type="struct" name="GypsySatellite" link="GypsySatellite.html#GypsySatellite-struct"/>
+    <keyword type="macro" name="GYPSY_SATELLITE_DBUS_INTERFACE" link="GypsySatellite.html#GYPSY-SATELLITE-DBUS-INTERFACE--CAPS"/>
+    <keyword type="macro" name="GYPSY_SATELLITE_DBUS_SERVICE" link="GypsySatellite.html#GYPSY-SATELLITE-DBUS-SERVICE--CAPS"/>
+    <keyword type="struct" name="GypsySatelliteDetails" link="GypsySatellite.html#GypsySatelliteDetails"/>
+    <keyword type="function" name="gypsy_satellite_new ()" link="GypsySatellite.html#gypsy-satellite-new"/>
+    <keyword type="function" name="gypsy_satellite_get_satellites ()" link="GypsySatellite.html#gypsy-satellite-get-satellites"/>
+    <keyword type="function" name="gypsy_satellite_free_satellite_array ()" link="GypsySatellite.html#gypsy-satellite-free-satellite-array"/>
+    <keyword type="property" name="The &quot;object-path&quot; property" link="GypsySatellite.html#GypsySatellite--object-path"/>
+    <keyword type="signal" name="The &quot;satellites-changed&quot; signal" link="GypsySatellite.html#GypsySatellite-satellites-changed"/>
+    <keyword type="struct" name="GypsyTime" link="gypsy-GypsyTime.html#GypsyTime"/>
+    <keyword type="macro" name="GYPSY_TIME_DBUS_SERVICE" link="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-SERVICE--CAPS"/>
+    <keyword type="macro" name="GYPSY_TIME_DBUS_INTERFACE" link="gypsy-GypsyTime.html#GYPSY-TIME-DBUS-INTERFACE--CAPS"/>
+    <keyword type="function" name="gypsy_time_new ()" link="gypsy-GypsyTime.html#gypsy-time-new"/>
+    <keyword type="function" name="gypsy_time_get_time ()" link="gypsy-GypsyTime.html#gypsy-time-get-time"/>
+    <keyword type="constant" name="GYPSY_DEVICE_FIX_STATUS_INVALID" link="GypsyDevice.html#GYPSY-DEVICE-FIX-STATUS-INVALID--CAPS"/>
+    <keyword type="constant" name="GYPSY_DEVICE_FIX_STATUS_NONE" link="GypsyDevice.html#GYPSY-DEVICE-FIX-STATUS-NONE--CAPS"/>
+    <keyword type="constant" name="GYPSY_DEVICE_FIX_STATUS_2D" link="GypsyDevice.html#GYPSY-DEVICE-FIX-STATUS-2D--CAPS"/>
+    <keyword type="constant" name="GYPSY_DEVICE_FIX_STATUS_3D" link="GypsyDevice.html#GYPSY-DEVICE-FIX-STATUS-3D--CAPS"/>
+    <keyword type="constant" name="GYPSY_ACCURACY_FIELDS_NONE" link="GypsyAccuracy.html#GYPSY-ACCURACY-FIELDS-NONE--CAPS"/>
+    <keyword type="constant" name="GYPSY_ACCURACY_FIELDS_POSITION" link="GypsyAccuracy.html#GYPSY-ACCURACY-FIELDS-POSITION--CAPS"/>
+    <keyword type="constant" name="GYPSY_ACCURACY_FIELDS_HORIZONTAL" link="GypsyAccuracy.html#GYPSY-ACCURACY-FIELDS-HORIZONTAL--CAPS"/>
+    <keyword type="constant" name="GYPSY_ACCURACY_FIELDS_VERTICAL" link="GypsyAccuracy.html#GYPSY-ACCURACY-FIELDS-VERTICAL--CAPS"/>
+    <keyword type="constant" name="GYPSY_COURSE_FIELDS_NONE" link="GypsyCourse.html#GYPSY-COURSE-FIELDS-NONE--CAPS"/>
+    <keyword type="constant" name="GYPSY_COURSE_FIELDS_SPEED" link="GypsyCourse.html#GYPSY-COURSE-FIELDS-SPEED--CAPS"/>
+    <keyword type="constant" name="GYPSY_COURSE_FIELDS_DIRECTION" link="GypsyCourse.html#GYPSY-COURSE-FIELDS-DIRECTION--CAPS"/>
+    <keyword type="constant" name="GYPSY_COURSE_FIELDS_CLIMB" link="GypsyCourse.html#GYPSY-COURSE-FIELDS-CLIMB--CAPS"/>
+    <keyword type="constant" name="GYPSY_POSITION_FIELDS_NONE" link="GypsyPosition.html#GYPSY-POSITION-FIELDS-NONE--CAPS"/>
+    <keyword type="constant" name="GYPSY_POSITION_FIELDS_LATITUDE" link="GypsyPosition.html#GYPSY-POSITION-FIELDS-LATITUDE--CAPS"/>
+    <keyword type="constant" name="GYPSY_POSITION_FIELDS_LONGITUDE" link="GypsyPosition.html#GYPSY-POSITION-FIELDS-LONGITUDE--CAPS"/>
+    <keyword type="constant" name="GYPSY_POSITION_FIELDS_ALTITUDE" link="GypsyPosition.html#GYPSY-POSITION-FIELDS-ALTITUDE--CAPS"/>
+  </functions>
+</book>
